@@ -46,6 +46,8 @@ public class BaseStats
         this.Stamina = stamina;
     }
 
+    public BaseStats() {
+    }
     //Method
     public String PrintStats()
     {

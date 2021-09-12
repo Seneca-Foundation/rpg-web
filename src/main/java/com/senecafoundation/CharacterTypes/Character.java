@@ -22,7 +22,7 @@ public abstract class Character extends BaseStats implements ICharacter
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private UUID id;
     @Transient
     private IDataHandler dataHandler;
     
@@ -34,10 +34,10 @@ public abstract class Character extends BaseStats implements ICharacter
     {
         return name;
     }
-    public String getId() {
+    public UUID getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
     public void setName(String name)
@@ -70,10 +70,13 @@ public abstract class Character extends BaseStats implements ICharacter
         this.name = name;
         this.age = age;
         this.sex = sex;
-        this.setId(UUID.randomUUID().toString());
+        this.setId(UUID.randomUUID());
         this.dataHandler = dataHandler; 
     }
 
+    public Character() {
+        super();
+    }
     //Methods
     public String PlayerDetails() //virtual
     {
@@ -82,7 +85,7 @@ public abstract class Character extends BaseStats implements ICharacter
 
     public String toString() 
     {
-        return this.getClass().getSimpleName() + "," + this.getId() + "," + this.getName() + ","  + this.getAge() + "," + this.getSex();
+        return this.getClass().getSimpleName() + "," + this.getId().toString() + "," + this.getName() + ","  + this.getAge() + "," + this.getSex();
     }  
 
 }

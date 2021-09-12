@@ -1,15 +1,21 @@
 package com.senecafoundation.CharacterTypes;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import com.senecafoundation.DataHandler.IDataHandler;
 
 @Entity
 @Table(name = "character")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class ShadowElf extends Character 
 {
     //Variables
+    @Column(nullable = true)
     private int destructionBonus;
+    @Column(nullable = true)
     private int alterationBonus;
 
     //Encapsulation
@@ -39,6 +45,9 @@ public class ShadowElf extends Character
         this.alterationBonus = alteration;
     }
 
+    public ShadowElf() {
+        super();
+    }
     //Method
     public String PlayerDetails() //override
     {

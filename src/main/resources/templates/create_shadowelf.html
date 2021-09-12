@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create a Shadow Elf</title>
+</head>
+    <body>
+        <h3>Welcome, Enter The Shadow Elf</h3>
+        <form action="#" th:action="@{/shadowelf/createform}" method="post" th:object="${shadowelf}">
+             <table> 
+                <tr>
+                    <td><label>Name</label></td>
+                    <td><input type="text" th:field="*{name}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Age</label></td>
+                    <td><input type="text" th:field="*{age}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Gender</label></td>
+                    <td><input type="text" th:field="*{sex}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Health</label></td>
+                    <td><input type="text" th:field="*{Health}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Mana</label></td>
+                    <td><input type="text" th:field="*{Mana}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Stamina</label></td>
+                    <td><input type="text" th:field="*{Stamina}" /></td>
+                </tr>
+                <tr>
+                    <td><label>desctructionBonus</label></td>
+                    <td><input type="text" th:field="*{destructionBonus}" /></td>
+                </tr>
+                <tr>
+                    <td><label>alterationBonus</label></td>
+                    <td><input type="text" th:field="*{alterationBonus}" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit"/></td>
+                </tr>
+            </table>
+        </form:form>
+    </body>
+</html>

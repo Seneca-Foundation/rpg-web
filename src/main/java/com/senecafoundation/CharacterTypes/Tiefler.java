@@ -1,15 +1,21 @@
 package com.senecafoundation.CharacterTypes;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import com.senecafoundation.DataHandler.IDataHandler;
 
 @Entity
 @Table(name = "character")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Tiefler extends Character 
 {
     //Variables
+    @Column(nullable = true)
     private int oneHandedBonus;
+    @Column(nullable = true)
     private int archeryBonus;
 
     //Encapsulation
