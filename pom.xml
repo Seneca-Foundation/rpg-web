@@ -21,9 +21,22 @@
 	</properties>
 	<dependencies>
 		<dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -86,4 +99,12 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+        <profile>
+            <id>warren</id>
+            <properties>
+                <active.profile>warren</active.profile>
+            </properties>
+        </profile>
+	</profiles>
 </project>

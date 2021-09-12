@@ -1,4 +1,4 @@
-package com.example.Spring_MVC_Magi;
+package com.senecafoundation;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
