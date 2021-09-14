@@ -101,9 +101,9 @@
 	</build>
 	<profiles>
         <profile>
-            <id>warren</id>
+            <id>ulysses</id>
             <properties>
-                <active.profile>warren</active.profile>
+                <active.profile>ulysses</active.profile>
             </properties>
         </profile>
 	</profiles>
