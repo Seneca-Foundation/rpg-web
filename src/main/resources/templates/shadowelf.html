@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title th:text="'A ' + ${shadowelf.name} + ' appears!'"></title>
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+    <div class="shadowelf">
+        <h1 th:text="'A ' + ${shadowelf.name} + ' appears!'"></h1>
+        <p th:text="'It is ' + ${shadowelf.sex} + '.'"></p>
+        <p th:text="'It is ' + ${shadowelf.age} + ' years old.'"></p>
+        <p th:text="'He has ' + ${shadowelf.Health} + ' health.'"></p>
+        <p th:text="'He has ' + ${shadowelf.Mana} + ' mana.'"></p>
+        <p th:text="'He has ' + ${shadowelf.Stamina} + ' stamina.'"></p>
+    </div>
+</body>
+</html>
