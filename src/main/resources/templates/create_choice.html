@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create a Choice</title>
+</head>
+    <body>
+        <h3>Welcome, Create a Choice</h3>
+        <form action="#" th:action="@{/choice/createform}" method="post" th:object="${choice}">
+             <table> 
+                <tr>
+                    <td><label>ChoiceOptionNumber</label></td>
+                    <td><input type="text" th:field="*{choiceOptionNumber}" /></td>
+                </tr>
+                <tr>
+                    <td><label>ChoiceText</label></td>
+                    <td><input type="text" th:field="*{choiceText}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Response</label></td>
+                    <td><input type="text" th:field="*{response}" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit"/></td>
+                </tr>
+            </table>
+        </form:form>
+    </body>
+</html>
