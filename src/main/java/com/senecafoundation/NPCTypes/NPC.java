@@ -21,6 +21,11 @@ public class NPC extends Character implements INPC
         this.phrases = phrases;
     }
 
+    public NPC() 
+    {
+        super();
+    }
+
     //Methods
     public String PrintPhrases()
     {
