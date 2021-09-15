@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create a Response</title>
+</head>
+    <body>
+        <h3>Welcome, Create a Response</h3>
+        <form action="#" th:action="@{/response/createform}" method="post" th:object="${response}">
+             <table> 
+                <tr>
+                    <td><label>ResponseText</label></td>
+                    <td><input type="text" th:field="*{responseText}" /></td>
+                </tr>
+                <tr>
+                    <td><label>ResultingSceneIDFromChoce</label></td>
+                    <td><input type="text" th:field="*{resultingSceneIDFromChoce}" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit"/></td>
+                </tr>
+            </table>
+        </form:form>
+    </body>
+</html>

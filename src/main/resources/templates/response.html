@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title th:text="${response.id}"></title>
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+    <div class="response">
+        <h1 th:text="${response.id}"></h1>
+        <p th:text="${response.responseText}"></p>
+        <p th:text="${response.resultingSceneIDFromChoce}"></p>
+    </div>
+</body>
+</html>
