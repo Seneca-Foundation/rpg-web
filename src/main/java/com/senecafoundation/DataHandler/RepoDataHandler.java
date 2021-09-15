@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import com.senecafoundation.CharacterTypes.ICharacter;
 import com.senecafoundation.CharacterTypes.ShadowElf;
+import com.senecafoundation.Scene.Choice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,11 @@ public class RepoDataHandler extends DataHandler {
     public boolean Delete(UUID id) throws Exception {
         // TODO Auto-generated method stub
         return false;
+    }
+
+    public boolean Create(Choice choice) 
+    {
+        return true;
     }
 
     
