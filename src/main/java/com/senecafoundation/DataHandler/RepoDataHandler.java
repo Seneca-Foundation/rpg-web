@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import com.senecafoundation.CharacterTypes.ICharacter;
 import com.senecafoundation.CharacterTypes.ShadowElf;
 import com.senecafoundation.Scene.Choice;
+import com.senecafoundation.Scene.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,6 +46,11 @@ public class RepoDataHandler extends DataHandler {
     }
 
     public boolean Create(Choice choice) 
+    {
+        return true;
+    }
+
+    public boolean Create(Response response) 
     {
         return true;
     }
