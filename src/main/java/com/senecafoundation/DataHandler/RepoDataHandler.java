@@ -8,6 +8,7 @@ import com.senecafoundation.CharacterTypes.ICharacter;
 import com.senecafoundation.CharacterTypes.ShadowElf;
 import com.senecafoundation.Scene.Choice;
 import com.senecafoundation.Scene.Response;
+import com.senecafoundation.Scene.Scenario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,6 +52,11 @@ public class RepoDataHandler extends DataHandler {
     }
 
     public boolean Create(Response response) 
+    {
+        return true;
+    }
+
+    public boolean Create(Scenario scenario) 
     {
         return true;
     }

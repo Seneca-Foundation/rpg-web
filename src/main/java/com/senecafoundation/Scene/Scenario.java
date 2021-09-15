@@ -75,6 +75,8 @@ public class Scenario
         this.previousSceneID = previousSceneId;
     }
 
+    public Scenario() {}
+
     //Methods
     public String Scene()
     {
