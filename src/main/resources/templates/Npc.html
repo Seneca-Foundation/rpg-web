@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title th:text=" ${Npc.name} + ' appears!'"></title>
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+    <div class="Npc">
+        <h1 th:text=" ${Npc.name} + ' appears!'"></h1>
+        <p th:text="'Sex: ' + ${Npc.sex} "></p>
+        <p th:text="'Age: ' + ${Npc.age} "></p>
+        <p th:text="'Health: ' + ${Npc.Health}"></p>
+        <p th:text="'Mana: ' + ${Npc.Mana}"></p>
+        <p th:text="'Stamina: ' + ${Npc.Stamina}"></p>
+    </div>
+</body>
+</html>
