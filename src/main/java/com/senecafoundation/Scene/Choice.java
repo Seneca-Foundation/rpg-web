@@ -10,15 +10,15 @@ import java.util.UUID;
 @Entity
 public class Choice
 {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+
     //Variables
     private String id;
     private int choiceOptionNumber;
     private String choiceText;
     private Response response;
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
 
     public Choice(int choiceOptionNumber, String choiceText, Response response) 
     {
