@@ -4,10 +4,13 @@ import com.senecafoundation.CharacterTypes.Character;
 import com.senecafoundation.DataHandler.FileDataHandler;
 import java.util.Random;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Npc")
+@Table(name = "npc")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class NPC extends Character implements INPC
 {
     private String[] phrases;
