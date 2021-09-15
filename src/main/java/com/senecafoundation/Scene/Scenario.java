@@ -3,8 +3,21 @@ package com.senecafoundation.Scene;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.Entity;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ElementCollection;
+
+@Entity
 public class Scenario
 {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @ElementCollection
+
     //Variables
     private String id;
     private String nextSceneID;
