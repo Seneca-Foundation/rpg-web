@@ -1,6 +1,5 @@
 package com.senecafoundation;
 import com.senecafoundation.NPCTypes.NPC;
-
 import com.senecafoundation.DataHandler.RepoDataHandler;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,19 +21,19 @@ public class NPCController
         
         @GetMapping("/createform")
         public String showForm(Model model) {
-            NPC npc = new NPC();
-            model.addAttribute("Npc", npc);
+            NPC Npc = new NPC();
+            model.addAttribute("Npc", Npc);
             return "create_Npc";
         }
     
         @RequestMapping(value = "/createform", method = RequestMethod.POST)
-        public String submit(@ModelAttribute("Npc") NPC npc, BindingResult result, ModelMap model) {
+        public String submit(@ModelAttribute("Npc") NPC Npc, BindingResult result, ModelMap model) {
             if (result.hasErrors()) {
                 return "error";
             }
-            dataHandler.Create(npc);
+            dataHandler.CreateNPC(Npc);
             //repo.save(shadowElf);
-            model.addAttribute("Npc", npc);
+            model.addAttribute("Npc", Npc);
             return "Npc";
         }
      

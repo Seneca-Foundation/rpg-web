@@ -9,7 +9,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "npc")
+@Table(name = "Npc")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class NPC extends Character implements INPC
 {
