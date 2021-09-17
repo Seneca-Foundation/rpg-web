@@ -2,10 +2,7 @@ package com.senecafoundation.Scene;
 
 import javax.persistence.Entity;
 import javax.persistence.Column;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +19,7 @@ public class Choice
     @GeneratedValue(strategy = GenerationType.AUTO)
 
     //Variables
-    private String id;
+    private UUID id;
     private int choiceOptionNumber;
     private String choiceText;
 
@@ -31,7 +28,7 @@ public class Choice
 
     public Choice(int choiceOptionNumber, String choiceText, Response response) 
     {
-        this.id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID();
         this.choiceOptionNumber = choiceOptionNumber;
         this.response = response;
         this.choiceText = choiceText;
@@ -39,7 +36,7 @@ public class Choice
 
     public Choice() {}
 
-    public String getId() 
+    public UUID getId() 
     {
         return id;
     }
