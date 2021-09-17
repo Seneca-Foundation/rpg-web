@@ -26,6 +26,7 @@ public class ChoiceController
         model.addAttribute("choice", choice);
         return "create_choice";
     }
+    
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
     public String submit(@ModelAttribute("choice") Choice choice, BindingResult result, ModelMap model) {

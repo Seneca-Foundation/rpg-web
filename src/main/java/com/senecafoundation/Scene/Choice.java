@@ -13,6 +13,7 @@ import java.util.UUID;
 @Entity
 // @Table(name = "choice")
 // @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+
 public class Choice
 {
     @Id
