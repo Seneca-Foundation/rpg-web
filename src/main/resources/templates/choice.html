@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title th:text="${choice.id}"></title>
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+    <div class="choice">
+        <h1 th:text="${choice.id}"></h1>
+        <p th:text="${choice.choiceOptionNumber}"></p>
+        <p th:text="${choice.choiceText}"></p>
+        <p th:text="${choice.response}"></p>
+    </div>
+</body>
+</html> 
