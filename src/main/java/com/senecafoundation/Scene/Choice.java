@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Column;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,6 +25,8 @@ public class Choice
     private String id;
     private int choiceOptionNumber;
     private String choiceText;
+
+    @OneToOne
     private Response response;
 
     public Choice(int choiceOptionNumber, String choiceText, Response response) 
