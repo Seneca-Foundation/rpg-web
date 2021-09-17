@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create Scenario</title>
+</head>
+    <body>
+        <h3>Welcome, Enter Scenario</h3>
+        <form action="#" th:action="@{/scenario/createform}" method="post" th:object="${scenario}">
+             <table> 
+                <tr>
+                    <td><label>Scene Name</label></td>
+                    <td><input type="text" th:field="*{sceneName}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Scene Text</label></td>
+                    <td><input type="text" th:field="*{sceneText}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Next</label></td>
+                    <td><input type="text" th:field="*{nextSceneID}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Before</label></td>
+                    <td><input type="text" th:field="*{previousSceneID}" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit"/></td>
+                </tr>
+            </table>
+        </form:form>
+    </body>
+</html>

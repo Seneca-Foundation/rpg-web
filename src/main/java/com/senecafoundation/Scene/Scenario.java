@@ -2,22 +2,40 @@ package com.senecafoundation.Scene;
 
 import java.util.List;
 import java.util.UUID;
+import javax.persistence.Entity;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ElementCollection;
 
+@Entity
 public class Scenario
 {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+
     //Variables
-    private String id;
+    private UUID id;
     private String nextSceneID;
     private String previousSceneID;
     private String sceneName;
     private String sceneText;
+
+    @ElementCollection
     private List<Choice> choices;
 
     //Accessor and Mutators
 
-    public String getId() 
+    public UUID getId() 
     {
         return id;
+    }
+
+    public void setId(UUID randomUUID) 
+    {
+        this.id = randomUUID;
     }
 
     public String getPreviousSceneID() {
@@ -54,13 +72,15 @@ public class Scenario
 
     public Scenario(List<Choice> choices, String sceneName, String sceneText, String nextSceneID, String previousSceneId)
     {
-        this.id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID();
         this.choices = choices;
         this.sceneName = sceneName;
         this.sceneText = sceneText;
         this.nextSceneID = nextSceneID;
         this.previousSceneID = previousSceneId;
     }
+
+    public Scenario() {}
 
     //Methods
     public String Scene()
@@ -88,4 +108,6 @@ public class Scenario
         }
         throw new Exception("Valid response not selected");
     }
+
+    
 }
