@@ -9,6 +9,7 @@ import com.senecafoundation.CharacterTypes.ShadowElf;
 import com.senecafoundation.Scene.Choice;
 import com.senecafoundation.Scene.Response;
 import com.senecafoundation.Scene.Scenario;
+import com.senecafoundation.NPCTypes.NPC;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,8 @@ public class RepoDataHandler extends DataHandler {
     private ResponseRepository responseRepository;
     @Autowired
     private ScenarioRepository scenarioRepository;
+    @Autowired
+    private NPCRepository npcRepository;
 
     @Transactional
     @Override
@@ -32,6 +35,13 @@ public class RepoDataHandler extends DataHandler {
         ShadowElf testCharacter = (ShadowElf) character;
         testCharacter.setId(UUID.randomUUID());
         this.shadowElfRepository.save(testCharacter);
+        return true;
+    }
+
+    public boolean CreateNPC(ICharacter character) {
+        NPC testCharacter = (NPC) character;
+        testCharacter.setId(UUID.randomUUID());
+        this.npcRepository.save(testCharacter);
         return true;
     }
 
