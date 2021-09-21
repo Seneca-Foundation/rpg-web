@@ -85,6 +85,23 @@ public boolean DeleteCharacter(UUID id) {
         return true;
     }
 
+    /* Read Method?
+    public Optional<Scenario> ReadScenario(UUID id) {
+        return this.scenarioRepository.findById(id);
+   }
+   */
+
+  public boolean UpdateScenario(Scenario scenario) {
+    this.scenarioRepository.save(scenario);
+    return true;
+}
+
+public boolean DeleteScenario(UUID id) {
+    this.scenarioRepository.deleteById(id);
+    return true;
+}
+
+
     @Override
     public ICharacter Read(UUID id) throws Exception {
         // TODO Auto-generated method stub

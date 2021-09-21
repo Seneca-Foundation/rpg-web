@@ -1,5 +1,5 @@
 package com.senecafoundation;
-
+import java.util.UUID;
 import com.senecafoundation.Scene.Scenario;
 import com.senecafoundation.DataHandler.RepoDataHandler;
 
@@ -37,4 +37,34 @@ public class ScenarioController
         model.addAttribute("scenario", scenario);
         return "scenario";
     }
+
+    /* Place Holder for Read
+        @RequestMapping(value = "/readform", method = RequestMethod.GET)
+    public String GetCharacter(@ModelAttribute("scenario") Scenario scenario, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error"; 
+        }
+        dataHandler.ReadCharacter(id)
+        return "scenario";
+    }
+	 */
+
+    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
+    public String change(@ModelAttribute("scenario") Scenario scenario, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        dataHandler.UpdateScenario(scenario);
+        return "scenario"; 
+    }
+
+    @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
+    public String erase(@ModelAttribute("scenario") Scenario scenario, UUID id, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        dataHandler.DeleteScenario(id);
+        return "scenario";
+    }
+
 }
