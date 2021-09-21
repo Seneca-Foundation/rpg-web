@@ -10,7 +10,6 @@ import com.senecafoundation.CharacterTypes.ShadowElf;
 import com.senecafoundation.Scene.Choice;
 import com.senecafoundation.Scene.Response;
 import com.senecafoundation.Scene.Scenario;
-import com.senecafoundation.NPCTypes.NPC;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -69,6 +68,22 @@ public boolean DeleteCharacter(UUID id) {
         return true;
     }
 
+    /* Read Method?
+    public Optional<Choice> ReadChoice(UUID id) {
+        return this.choiceRepository.findById(id);
+   }
+   */
+
+  public boolean UpdateChoice(Choice choice) {
+    this.choiceRepository.save(choice);
+    return true;
+}
+
+public boolean DeleteChoice(UUID id) {
+    this.choiceRepository.deleteById(id);
+    return true;
+}
+
     public boolean CreateResponse(Response response) 
     {
         Response testResponse = (Response) response;
@@ -76,6 +91,22 @@ public boolean DeleteCharacter(UUID id) {
         this.responseRepository.save(testResponse);
         return true;
     }
+
+    /* Read Method?
+    public Optional<Response> ReadResponse(UUID id) {
+        return this.responseRepository.findById(id);
+   }
+   */
+
+  public boolean UpdateResponse(Response response) {
+    this.responseRepository.save(response);
+    return true;
+}
+
+public boolean DeleteResponse(UUID id) {
+    this.responseRepository.deleteById(id);
+    return true;
+}
 
     public boolean CreateScenario(Scenario scenario) 
     {

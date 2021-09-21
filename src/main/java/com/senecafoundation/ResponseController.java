@@ -1,5 +1,5 @@
 package com.senecafoundation;
-
+import java.util.UUID;
 import com.senecafoundation.Scene.Response;
 import com.senecafoundation.DataHandler.RepoDataHandler;
 
@@ -37,4 +37,34 @@ public class ResponseController
         model.addAttribute("response", response);
         return "response";
     }
+
+    /* Place Holder for Read
+        @RequestMapping(value = "/readform", method = RequestMethod.GET)
+    public String GetCharacter(@ModelAttribute("response") Response response, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error"; 
+        }
+        dataHandler.ReadResponse(id)
+        return "response";
+    }
+	 */
+
+    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
+    public String change(@ModelAttribute("response") Response response, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        dataHandler.UpdateResponse(response);
+        return "response"; 
+    }
+
+    @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
+    public String erase(@ModelAttribute("response") Response response, UUID id, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        dataHandler.DeleteResponse(id);
+        return "response";
+    }
+
 }

@@ -1,5 +1,5 @@
 package com.senecafoundation;
-
+import java.util.UUID;
 import com.senecafoundation.Scene.Choice;
 import com.senecafoundation.DataHandler.RepoDataHandler;
 
@@ -38,4 +38,34 @@ public class ChoiceController
         model.addAttribute("choice", choice);
         return "choice";
     }
+
+    /* Place Holder for Read
+        @RequestMapping(value = "/readform", method = RequestMethod.GET)
+    public String GetCharacter(@ModelAttribute("choice") Choice choice, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error"; 
+        }
+        dataHandler.ReadChoice(id)
+        return "choice";
+    }
+	 */
+
+    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
+    public String change(@ModelAttribute("choice") Choice choice, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        dataHandler.UpdateChoice(choice);
+        return "choice"; 
+    }
+
+    @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
+    public String erase(@ModelAttribute("choice") Choice choice, UUID id, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        dataHandler.DeleteCharacter(id);
+        return "choice";
+    }
+
 }
