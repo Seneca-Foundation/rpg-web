@@ -1,4 +1,5 @@
 package com.senecafoundation;
+import java.util.UUID;
 import com.senecafoundation.NPCTypes.NPC;
 import com.senecafoundation.DataHandler.RepoDataHandler;
 
@@ -30,10 +31,39 @@ public class NPCController
             if (result.hasErrors()) {
                 return "error";
             }
-            dataHandler.CreateNPC(Npc);
+            dataHandler.CreateCharacter(Npc);
             //repo.save(shadowElf);
             model.addAttribute("Npc", Npc);
             return "Npc";
         }
+
+        /* Place Holder for Read
+        @RequestMapping(value = "/createform", method = RequestMethod.GET)
+    public String GetCharacter(@ModelAttribute("Npc") NPC Npc, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error"; 
+        }
+        dataHandler.ReadCharacter(id)
+        return "Npc";
+    }
+	 */
+
+    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
+    public String change(@ModelAttribute("Npc") NPC Npc, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        dataHandler.UpdateCharacter(Npc);
+        return "Npc"; 
+    }
+
+    @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
+    public String erase(@ModelAttribute("Npc") NPC Npc, UUID id, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        dataHandler.DeleteCharacter(id);
+        return "Npc";
+    }
 
 }

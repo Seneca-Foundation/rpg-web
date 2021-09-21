@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import javax.transaction.Transactional;
 
+import com.senecafoundation.CharacterTypes.Character;
 import com.senecafoundation.CharacterTypes.ICharacter;
 import com.senecafoundation.CharacterTypes.ShadowElf;
 import com.senecafoundation.Scene.Choice;
@@ -27,7 +28,7 @@ public class RepoDataHandler extends DataHandler {
     @Autowired
     private ScenarioRepository scenarioRepository;
     @Autowired
-    private NPCRepository npcRepository;
+    private CharacterRepository characterRepository;
 
     @Transactional
     @Override
@@ -38,12 +39,27 @@ public class RepoDataHandler extends DataHandler {
         return true;
     }
 
-    public boolean CreateNPC(ICharacter character) {
-        NPC testCharacter = (NPC) character;
+    public boolean CreateCharacter(Character character) {
+        Character testCharacter =  character;
         testCharacter.setId(UUID.randomUUID());
-        this.npcRepository.save(testCharacter);
+        this.characterRepository.save(testCharacter);
         return true;
     }
+    /* Read Method?
+    public Optional<Character> ReadCharacter(UUID id) {
+        return this.characterRepository.findById(id);
+   }
+   */
+
+  public boolean UpdateCharacter(Character character) {
+    this.characterRepository.save(character);
+    return true;
+}
+
+public boolean DeleteCharacter(UUID id) {
+    this.characterRepository.deleteById(id);
+    return true;
+}
 
     public boolean CreateChoice(Choice choice) 
     {
