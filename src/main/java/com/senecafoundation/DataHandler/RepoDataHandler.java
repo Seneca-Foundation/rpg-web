@@ -1,5 +1,6 @@
 package com.senecafoundation.DataHandler;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import javax.transaction.Transactional;
@@ -44,12 +45,10 @@ public class RepoDataHandler extends DataHandler {
         this.characterRepository.save(testCharacter);
         return true;
     }
-    /* Read Method?
+    /* Read Method? */
     public Optional<Character> ReadCharacter(UUID id) {
         return this.characterRepository.findById(id);
    }
-   */
-  
   public boolean UpdateCharacter(Character character) {
     this.characterRepository.save(character);
     return true;
