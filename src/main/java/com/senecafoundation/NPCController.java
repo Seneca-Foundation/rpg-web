@@ -1,5 +1,7 @@
 package com.senecafoundation;
+import java.util.Optional;
 import java.util.UUID;
+import com.senecafoundation.CharacterTypes.Character;
 import com.senecafoundation.NPCTypes.NPC;
 import com.senecafoundation.DataHandler.RepoDataHandler;
 
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,16 +40,21 @@ public class NPCController
             return "Npc";
         }
 
-        /* Place Holder for Read
-        @RequestMapping(value = "/createform", method = RequestMethod.GET)
-    public String GetCharacter(@ModelAttribute("Npc") NPC Npc, BindingResult result, ModelMap model) {
+        @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	 public Optional<Character> getCharacter(@PathVariable UUID id) {
+	 	return dataHandler.ReadCharacter(id);
+	 }
+
+        /* Place Holder for Read*/
+        @RequestMapping(value = "/readform", method = RequestMethod.GET)
+    public String GetCharacter(@ModelAttribute("Npc") UUID id, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error"; 
         }
-        dataHandler.ReadCharacter(id)
+        dataHandler.ReadCharacter(id);
         return "Npc";
     }
-	 */
+	 
 
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("Npc") NPC Npc, BindingResult result, ModelMap model) {
@@ -58,7 +66,7 @@ public class NPCController
     }
 
     @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
-    public String erase(@ModelAttribute("Npc") NPC Npc, UUID id, BindingResult result, ModelMap model) {
+    public String erase(@ModelAttribute("Npc") UUID id, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
