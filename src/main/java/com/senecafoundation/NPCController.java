@@ -1,6 +1,7 @@
 package com.senecafoundation;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.List;
 import com.senecafoundation.CharacterTypes.Character;
 import com.senecafoundation.NPCTypes.NPC;
 import com.senecafoundation.DataHandler.RepoDataHandler;
@@ -65,8 +66,16 @@ public class NPCController
         return "Npc"; 
     }
 
+    @GetMapping("/deleteform")
+        public String showFormDelete(Model model) {
+            NPC Npc = new NPC();
+            //List<Character> npcList = dataHandler.listAll();
+            model.addAttribute("Npc", Npc);
+            return "delete_Npc";
+        }
+
     @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
-    public String erase(@ModelAttribute("Npc") UUID id, BindingResult result, ModelMap model) {
+    public String DELETE(@ModelAttribute("Npc") UUID id, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }

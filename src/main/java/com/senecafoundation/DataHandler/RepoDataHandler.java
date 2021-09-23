@@ -5,7 +5,6 @@ import java.util.UUID;
 import java.util.List;
 
 import javax.transaction.Transactional;
-
 import com.senecafoundation.CharacterTypes.Character;
 import com.senecafoundation.CharacterTypes.ICharacter;
 import com.senecafoundation.CharacterTypes.ShadowElf;
@@ -52,7 +51,7 @@ public class RepoDataHandler extends DataHandler {
    }
 
    public List<Character> listAll() {
-    return characterRepository.findAll();
+    return this.characterRepository.findAll();
 }
     /* One Read Method? */
     public Character get(UUID id) {   
