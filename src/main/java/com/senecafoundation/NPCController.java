@@ -75,11 +75,11 @@ public class NPCController
         }
 
     @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
-    public String DELETE(@ModelAttribute("Npc") UUID id, BindingResult result, ModelMap model) {
+    public String DELETE(@ModelAttribute("Npc") NPC Npc,UUID id, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
-        dataHandler.DeleteCharacter(id);
+        dataHandler.DeleteCharacter(Npc.getId());
         return "Npc";
     }
 
