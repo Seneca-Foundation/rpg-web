@@ -1,20 +1,46 @@
-<html lang="en">
-<head>
-    <title>Delete a NPC</title>
-</head>
+<!DOCTYPE html>
+<html>
+    <head></head>
     <body>
-        <h3>Welcome to the NPC Delete Screen</h3>
-        <form action="#" th:action="@{/Npc/deleteform}" method="DELETE" th:object="${Npc}">
-             <table> 
-                <tr>
-                    <td><label>Input ID</label></td>
-                    <td><input type="text" th:field="*{Id}" /></td>
-                </tr>
-                
-                <tr>
-                    <td><input type="submit" value="Submit"/></td>
-                </tr>
-            </table>
-        </form:form>
-    </body>
+        <table>
+            <tr th:each="Npc : ${Npc}">
+                <td th:text="${Npc.name}"></td>
+                <td th:text="${Npc.sex}"></td>
+                <td th:text="${Npc.age}"></td> 
+                <td th:text="${Npc.Health}"></td>
+                <td th:text="${Npc.Mana}"></td>
+                <td th:text="${Npc.Stamina}"></td>
+                <td><button id="delete-button" th:data-id="${Npc.Id}">Delete</button></td>
+            </tr>
+            <div id="loadstuffhere"></div>
+        </table>
+        <script type="text/javascript">
+            document.getElementById("delete-button").onclick = function() {
+                // Creates an object to send request to web server
+                var xhr = new XMLHttpRequest();
+
+                // Define the request method and url
+                xhr.open("DELETE", "http://localhost/Npc/deleteform/" + this.dataset.id);
+
+                // Set header
+                xhr.setRequestHeader("Accept", "application/json");
+
+                // Set a function to run on state state change
+                xhr.onreadystatechange = function () {
+                    // state == 4
+                    if (xhr.readyState === 4) {
+                        // Log out the status and response to the console
+                        console.log(xhr.status);
+                        console.log(xhr.responseText);
+                        // inject the resposne text into the html tag with id "loadstuffhere"
+                        document.getElementById("loadstuffhere").innerText = xhr.responseText;
+                    }
+                };
+
+                // Send the request
+                xhr.send();
+            }
+        </script>
+    </body> 
+
 </html>

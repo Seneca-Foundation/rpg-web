@@ -6,6 +6,7 @@ import com.senecafoundation.CharacterTypes.Character;
 import com.senecafoundation.NPCTypes.NPC;
 import com.senecafoundation.DataHandler.RepoDataHandler;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -74,13 +75,15 @@ public class NPCController
             return "delete_Npc";
         }
 
-    @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
-    public String DELETE(@ModelAttribute("Npc") NPC Npc,UUID id, BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return "error";
+    @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("id") String Id, ModelMap model) {
+        try {
+            dataHandler.DeleteCharacter(UUID.fromString(Id));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        dataHandler.DeleteCharacter(Npc.getId());
-        return "Npc";
-    }
+        model.addAttribute("id", Id);
+        return "itemdeleted";
+        }
 
 }

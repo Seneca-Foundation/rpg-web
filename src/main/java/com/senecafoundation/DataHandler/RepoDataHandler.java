@@ -50,7 +50,7 @@ public class RepoDataHandler extends DataHandler {
         return this.characterRepository.findById(id);
    }
 
-   public List<Character> listAll() {
+   public List<Character> ReadAll() {
     return this.characterRepository.findAll();
 }
     /* One Read Method? */
