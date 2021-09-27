@@ -1,7 +1,9 @@
 package com.senecafoundation;
+import java.util.UUID;
 
-import com.senecafoundation.Scene.Choice;
+import com.senecafoundation.DataHandler.ChoiceDataHandler;
 import com.senecafoundation.DataHandler.RepoDataHandler;
+import com.senecafoundation.Scene.Choice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ChoiceController 
 {
     @Autowired
-    RepoDataHandler dataHandler;
+    ChoiceDataHandler<Choice> dataHandler;
 
     @GetMapping("/createform")
     public String showForm(Model model) {
@@ -33,9 +35,39 @@ public class ChoiceController
         if (result.hasErrors()) {
             return "error";
         }
-        dataHandler.CreateChoice(choice);
+        dataHandler.Create(choice);
         //repo.save(shadowElf);
         model.addAttribute("choice", choice);
         return "choice";
     }
+
+    /* Place Holder for Read
+        @RequestMapping(value = "/readform", method = RequestMethod.GET)
+    public String GetCharacter(@ModelAttribute("choice") Choice choice, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error"; 
+        }
+        dataHandler.ReadChoice(id)
+        return "choice";
+    }
+	 */
+
+    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
+    public String change(@ModelAttribute("choice") Choice choice, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        dataHandler.Update(choice);
+        return "choice"; 
+    }
+
+    @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
+    public String erase(@ModelAttribute("choice") Choice choice, UUID id, BindingResult result, ModelMap model) throws Exception {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        dataHandler.Delete(id);
+        return "choice";
+    }
+
 }

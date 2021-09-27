@@ -3,13 +3,14 @@ package com.senecafoundation.DataHandler;
 import java.util.Scanner;
 import java.util.UUID;
 import java.util.ArrayList;
+import java.util.List;
 import java.io.*;
 
 import com.senecafoundation.CharacterTypes.Character;
 import com.senecafoundation.CharacterTypes.ICharacter;
 import com.senecafoundation.CharacterTypes.Orc;
 
-public class FileDataHandler extends DataHandler {
+public class FileDataHandler extends CharacterDataHandler {
     
     private String fileLocation;
     private File file;
@@ -134,5 +135,11 @@ public class FileDataHandler extends DataHandler {
         }
         // We throw a custom error here if we can't find anything with that ID
         throw new Exception("Item not found with that ID");
+    }
+
+    @Override
+    public List<ICharacter> ReadAll() {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

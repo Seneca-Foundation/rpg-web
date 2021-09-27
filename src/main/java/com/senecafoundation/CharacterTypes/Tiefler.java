@@ -5,7 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-import com.senecafoundation.DataHandler.IDataHandler;
+
+import com.senecafoundation.DataHandler.Interfaces.IDataHandler;
 
 @Entity
 @Table(name = "character")

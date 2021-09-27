@@ -1,4 +1,4 @@
-package com.senecafoundation.DataHandler;
+package com.senecafoundation.DataHandler.Interfaces;
 
 import com.senecafoundation.CharacterTypes.ICharacter;
 

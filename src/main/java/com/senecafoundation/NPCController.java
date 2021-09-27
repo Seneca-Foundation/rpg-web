@@ -1,12 +1,16 @@
 package com.senecafoundation;
-import com.senecafoundation.NPCTypes.NPC;
-import com.senecafoundation.DataHandler.RepoDataHandler;
 
+import java.util.UUID;
+import java.util.List;
+import com.senecafoundation.CharacterTypes.ICharacter;
+import com.senecafoundation.DataHandler.NpcDataHandler;
+import com.senecafoundation.NPCTypes.NPC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,25 +19,65 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("Npc")
 public class NPCController 
 {
-        @Autowired
-        RepoDataHandler dataHandler;
+    @Autowired
+    NpcDataHandler dataHandler;
 
-        @GetMapping("/createform")
-        public String showForm(Model model) {
-            NPC Npc = new NPC();
-            model.addAttribute("Npc", Npc);
-            return "create_Npc";
+    @GetMapping("/createform")
+    public String showForm(Model model) {
+        NPC Npc = new NPC();
+        model.addAttribute("Npc", Npc);
+        return "create_Npc";
+    }
+
+    @RequestMapping(value = "/createform", method = RequestMethod.POST)
+    public String submit(@ModelAttribute("Npc") NPC Npc, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
         }
+        dataHandler.Create(Npc);
+        //repo.save(shadowElf);
+        model.addAttribute("Npc", Npc);
+        return "Npc";
+    }
 
-        @RequestMapping(value = "/createform", method = RequestMethod.POST)
-        public String submit(@ModelAttribute("Npc") NPC Npc, BindingResult result, ModelMap model) {
-            if (result.hasErrors()) {
-                return "error";
-            }
-            dataHandler.CreateNPC(Npc);
-            //repo.save(shadowElf);
-            model.addAttribute("Npc", Npc);
-            return "Npc";
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ICharacter getCharacter(@PathVariable UUID id) throws Exception {
+        return dataHandler.Read(id);
+    }
+
+    @RequestMapping(value = "/readform", method = RequestMethod.GET)
+    public String GetCharacter(@ModelAttribute("Npc") UUID id, BindingResult result, ModelMap model) throws Exception {
+        if (result.hasErrors()) {
+            return "error"; 
         }
+        dataHandler.Read(id);
+        return "Npc";
+    }
 
+    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
+    public String change(@ModelAttribute("Npc") NPC Npc, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        dataHandler.Update(Npc);
+        return "Npc"; 
+    }
+
+    @GetMapping("/deleteform")
+    public String showFormDelete(Model model) {
+        List<ICharacter> npcList = dataHandler.ReadAll();
+        model.addAttribute("Npc", npcList);
+        return "delete_Npc";
+    }
+
+    @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("id") String Id, ModelMap model) {
+        try {
+            dataHandler.Delete(UUID.fromString(Id));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("Id", Id);
+        return "itemdelete";
+    }
 }

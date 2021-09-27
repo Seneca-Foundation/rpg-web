@@ -1,4 +1,4 @@
-package com.senecafoundation.DataHandler;
+package com.senecafoundation.Repository;
 
 import java.util.UUID;
 
@@ -9,4 +9,4 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface ResponseRepository extends JpaRepository<Response, UUID> {}
+public interface ResponseRepository<T extends Response> extends JpaRepository<Response, UUID> {}

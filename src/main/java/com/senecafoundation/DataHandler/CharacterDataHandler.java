@@ -3,8 +3,9 @@ package com.senecafoundation.DataHandler;
 import java.util.UUID;
 
 import com.senecafoundation.CharacterTypes.ICharacter;
+import com.senecafoundation.DataHandler.Interfaces.IDataHandler;
 
-public abstract class DataHandler implements IDataHandler
+public abstract class CharacterDataHandler implements IDataHandler
 {
 
     @Override
