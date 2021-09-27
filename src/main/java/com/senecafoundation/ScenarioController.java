@@ -1,6 +1,7 @@
 package com.senecafoundation;
 import java.util.UUID;
-
+import org.springframework.web.bind.annotation.PathVariable;
+import java.util.List;
 import com.senecafoundation.DataHandler.RepoDataHandler;
 import com.senecafoundation.DataHandler.SceneDataHandler;
 import com.senecafoundation.Scene.Scenario;
@@ -58,13 +59,22 @@ public class ScenarioController
         return "scenario"; 
     }
 
-    @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
-    public String erase(@ModelAttribute("scenario") Scenario scenario, UUID id, BindingResult result, ModelMap model) throws Exception {
-        if (result.hasErrors()) {
-            return "error";
+    @GetMapping("/deleteform")
+    public String showFormDelete(Model model) {
+        List<Scenario> scenarioList = dataHandler.ReadAll();
+        model.addAttribute("scenario", scenarioList);
+        return "delete_Scenario";//connects to html file
+    }
+
+    @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("id") String Id, ModelMap model) {
+        try {
+            dataHandler.Delete(UUID.fromString(Id));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        dataHandler.Delete(id);
-        return "scenario";
+        model.addAttribute("Id", Id);
+        return "itemdelete";
     }
 
 }
