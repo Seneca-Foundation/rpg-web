@@ -1,8 +1,9 @@
 package com.senecafoundation;
 import java.util.UUID;
-import com.senecafoundation.Scene.Scenario;
-import com.senecafoundation.DataHandler.RepoDataHandler;
 
+import com.senecafoundation.DataHandler.RepoDataHandler;
+import com.senecafoundation.DataHandler.SceneDataHandler;
+import com.senecafoundation.Scene.Scenario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ScenarioController 
 {
     @Autowired
-    RepoDataHandler dataHandler;
+    SceneDataHandler<Scenario> dataHandler;
     
     @GetMapping("/createform")
     public String showForm(Model model) {
@@ -32,8 +33,7 @@ public class ScenarioController
         if (result.hasErrors()) {
             return "error";
         }
-        dataHandler.CreateScenario(scenario);
-        //repo.save(shadowElf);
+        dataHandler.Create(scenario);
         model.addAttribute("scenario", scenario);
         return "scenario";
     }
@@ -54,16 +54,16 @@ public class ScenarioController
         if (result.hasErrors()) {
             return "error";
         }
-        dataHandler.UpdateScenario(scenario);
+        dataHandler.Update(scenario);
         return "scenario"; 
     }
 
     @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
-    public String erase(@ModelAttribute("scenario") Scenario scenario, UUID id, BindingResult result, ModelMap model) {
+    public String erase(@ModelAttribute("scenario") Scenario scenario, UUID id, BindingResult result, ModelMap model) throws Exception {
         if (result.hasErrors()) {
             return "error";
         }
-        dataHandler.DeleteScenario(id);
+        dataHandler.Delete(id);
         return "scenario";
     }
 

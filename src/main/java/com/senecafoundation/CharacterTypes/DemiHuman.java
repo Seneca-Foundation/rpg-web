@@ -1,6 +1,6 @@
 package com.senecafoundation.CharacterTypes;
 
-import com.senecafoundation.DataHandler.IDataHandler;
+import com.senecafoundation.DataHandler.Interfaces.IDataHandler;
 public class DemiHuman extends Character 
 {
     //Variables

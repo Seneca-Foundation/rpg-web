@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
-import com.senecafoundation.DataHandler.IDataHandler;
+import com.senecafoundation.DataHandler.Interfaces.IDataHandler;
 
 @MappedSuperclass
 public abstract class Character extends BaseStats implements ICharacter 
