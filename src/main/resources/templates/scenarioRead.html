@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title th:text="'You have read the item with ID ' + ${Id}"></title>
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+    <div class="scenario">
+        <h1 th:text="${scenario.id}"></h1>
+        <p th:text="'Scene Name: ' + ${scenario.sceneName}"></p>
+        <p th:text="'Scene Text: ' + ${scenario.sceneText}"></p>
+        <p th:text="'Next: ' + ${scenario.nextSceneID}"></p>
+        <p th:text="'Before ' + ${scenario.previousSceneID}"></p>
+    </div>
+</body>
+</html>

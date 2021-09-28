@@ -53,19 +53,9 @@ public class ScenarioController
             e.printStackTrace();
         }
         model.addAttribute("Id", Id);
-        return "itemread";
+        return "scenarioRead";
     }
-
-    /* Place Holder for Read
-        @RequestMapping(value = "/readform", method = RequestMethod.GET)
-    public String GetCharacter(@ModelAttribute("scenario") Scenario scenario, BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return "error"; 
-        }
-        dataHandler.ReadCharacter(id)
-        return "scenario";
-    }
-	 */
+	 
 
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("scenario") Scenario scenario, BindingResult result, ModelMap model) {

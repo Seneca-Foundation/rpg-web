@@ -8,12 +8,12 @@
                 <td th:text="${scenario.sceneText}"></td>
                 <td th:text="${scenario.nextSceneID}"></td> 
                 <td th:text="${scenario.previousSceneID}"></td>
-                <td><button class="delete-button" th:data-id="${scenario.Id}">Read</button></td>
+                <td><button class="read-button" th:data-id="${scenario.Id}">Read</button></td>
             </tr>
             <div id="loadstuffhere"></div>
         </table>
         <script type="text/javascript">
-            var listOfDeleteButtons = document.getElementsByClassName("delete-button");
+            var listOfDeleteButtons = document.getElementsByClassName("read-button");
             for(let buttonIndex = 0; buttonIndex < listOfDeleteButtons.length; buttonIndex++) {
                 listOfDeleteButtons[buttonIndex].onclick = function() {
                     // Creates an object to send request to web server
