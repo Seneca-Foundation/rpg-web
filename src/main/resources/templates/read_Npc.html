@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <table>
+            <tr th:each="Npc : ${Npc}">
+                <td th:text="${Npc.name}"></td>
+                <td th:text="${Npc.sex}"></td>
+                <td th:text="${Npc.age}"></td> 
+                <td th:text="${Npc.Health}"></td>
+                <td th:text="${Npc.Mana}"></td>
+                <td th:text="${Npc.Stamina}"></td>
+            </tr>
+        </table>
+        <div id = "trying">
+        <button id="button"onclick="loadDoc()">Click</button>
+        </div>
+        
+        <br>
+        <br>
+        <script>
+        function loadDoc() 
+        {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() 
+            {
+                if (this.readyState == 4 && this.status == 200) 
+                {
+                    document.getElementById("trying").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "http://localhost/Npc/readform/", true);
+            xhttp.send();
+        }
+        </script>
+    </body> 
+
+</html>
