@@ -6,6 +6,13 @@
     </head>
     <body>
         <div class="plantsecond" th:text= "'You have read the item with ID ' + ${Id}">
+            <br><br>
+            <h1 th:text="${scenario.id}"></h1>
+            <p th:text="'Scene Name: ' + ${scenario.sceneName}"></p>
+            <p th:text="'Scene Text: ' + ${scenario.sceneText}"></p>
+            <p th:text="'Next: ' + ${scenario.nextSceneID}"></p>
+            <p th:text="'Before ' + ${scenario.previousSceneID}"></p>
+            <br><br>
         </div>
     </body>
 

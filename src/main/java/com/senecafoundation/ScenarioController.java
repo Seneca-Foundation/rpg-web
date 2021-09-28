@@ -53,7 +53,7 @@ public class ScenarioController
             e.printStackTrace();
         }
         model.addAttribute("Id", Id);
-        return "scenarioRead";
+        return "itemread";
     }
 	 
 
