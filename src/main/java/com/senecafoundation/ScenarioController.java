@@ -42,10 +42,10 @@ public class ScenarioController
     public String showReadForm(Model model) {
         List<Scenario> scenarioList = dataHandler.ReadAll();
         model.addAttribute("scenario", scenarioList);
-        return "read_scenario";
+        return "read_Scenario";
     }
 
-    @RequestMapping(value ="/readform", method = RequestMethod.GET)
+    @RequestMapping(value ="/readform/{id}", method = RequestMethod.GET)
     public String submitRead(@PathVariable("id") String Id, ModelMap model) {
         try {
             dataHandler.Read(UUID.fromString(Id));

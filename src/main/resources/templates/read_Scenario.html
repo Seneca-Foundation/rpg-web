@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <table>
+            <tr th:each="scenario : ${scenario}">
+                <td th:text="${scenario.sceneName}"></td>
+                <td th:text="${scenario.sceneText}"></td>
+                <td th:text="${scenario.nextSceneID}"></td> 
+                <td th:text="${scenario.previousSceneID}"></td>
+                <td><button class="delete-button" th:data-id="${scenario.Id}">Read</button></td>
+            </tr>
+            <div id="loadstuffhere"></div>
+        </table>
+        <script type="text/javascript">
+            var listOfDeleteButtons = document.getElementsByClassName("delete-button");
+            for(let buttonIndex = 0; buttonIndex < listOfDeleteButtons.length; buttonIndex++) {
+                listOfDeleteButtons[buttonIndex].onclick = function() {
+                    // Creates an object to send request to web server
+                    var xhr = new XMLHttpRequest();
+
+                    // Define the request method and url
+                    xhr.open("GET", "http://localhost/scenario/readform/" + this.dataset.id);
+
+                    // Set header
+                    xhr.setRequestHeader("Accept", "application/json");
+
+                    // Set a function to run on state state change
+                    xhr.onreadystatechange = function () {
+                        // state == 4
+                        if (xhr.readyState === 4) {
+                            // Log out the status and response to the console
+                            console.log(xhr.status);
+                            console.log(xhr.responseText);
+                            // inject the resposne text into the html tag with id "loadstuffhere"
+                            document.getElementById("loadstuffhere").innerText = xhr.responseText;
+                        }
+                    };
+
+                    // Send the request
+                    xhr.send();
+                }
+            }
+        </script>
+    </body> 
+
+</html>
