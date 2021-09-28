@@ -38,6 +38,24 @@ public class ScenarioController
         return "scenario";
     }
 
+    @GetMapping("/readform")
+    public String showReadForm(Model model) {
+        List<Scenario> scenarioList = dataHandler.ReadAll();
+        model.addAttribute("scenario", scenarioList);
+        return "read_scenario";
+    }
+
+    @RequestMapping(value ="/readform", method = RequestMethod.GET)
+    public String submitRead(@PathVariable("id") String Id, ModelMap model) {
+        try {
+            dataHandler.Read(UUID.fromString(Id));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("Id", Id);
+        return "itemread";
+    }
+
     /* Place Holder for Read
         @RequestMapping(value = "/readform", method = RequestMethod.GET)
     public String GetCharacter(@ModelAttribute("scenario") Scenario scenario, BindingResult result, ModelMap model) {
