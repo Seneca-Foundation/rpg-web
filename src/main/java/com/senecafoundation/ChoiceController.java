@@ -1,10 +1,9 @@
 package com.senecafoundation;
 import java.util.UUID;
-
+import java.util.List;
 import com.senecafoundation.DataHandler.ChoiceDataHandler;
-import com.senecafoundation.DataHandler.RepoDataHandler;
 import com.senecafoundation.Scene.Choice;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,13 +60,22 @@ public class ChoiceController
         return "choice"; 
     }
 
-    @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
-    public String erase(@ModelAttribute("choice") Choice choice, UUID id, BindingResult result, ModelMap model) throws Exception {
-        if (result.hasErrors()) {
-            return "error";
+    @GetMapping("/deleteform")
+    public String showFormDelete(Model model) {
+        List<Choice> choiceList = dataHandler.ReadAll();
+        model.addAttribute("choice", choiceList);
+        return "delete_Choice";//connects to html file
+    }
+
+    @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("id") String Id, ModelMap model) {
+        try {
+            dataHandler.Delete(UUID.fromString(Id));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        dataHandler.Delete(id);
-        return "choice";
+        model.addAttribute("Id", Id);
+        return "itemdelete";
     }
 
 }

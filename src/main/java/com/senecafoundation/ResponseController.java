@@ -1,5 +1,6 @@
 package com.senecafoundation;
-
+import java.util.List;
+import org.springframework.web.bind.annotation.PathVariable;
 import java.util.UUID;
 import com.senecafoundation.DataHandler.ResponseDataHandler;
 import com.senecafoundation.Scene.Response;
@@ -58,13 +59,22 @@ public class ResponseController
         return "response"; 
     }
 
-    @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
-    public String erase(@ModelAttribute("response") Response response, UUID id, BindingResult result, ModelMap model) throws Exception {
-        if (result.hasErrors()) {
-            return "error";
+    @GetMapping("/deleteform")
+    public String showFormDelete(Model model) {
+        List<Response> responseList = dataHandler.ReadAll();
+        model.addAttribute("response", responseList);
+        return "delete_Response";//connects to html file
+    }
+
+    @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("id") String Id, ModelMap model) {
+        try {
+            dataHandler.Delete(UUID.fromString(Id));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        dataHandler.Delete(id);
-        return "response";
+        model.addAttribute("Id", Id);
+        return "itemdelete";
     }
 
 }
