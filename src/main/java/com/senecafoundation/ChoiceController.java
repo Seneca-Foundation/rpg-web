@@ -40,16 +40,23 @@ public class ChoiceController
         return "choice";
     }
 
-    /* Place Holder for Read
-        @RequestMapping(value = "/readform", method = RequestMethod.GET)
-    public String GetCharacter(@ModelAttribute("choice") Choice choice, BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return "error"; 
-        }
-        dataHandler.ReadChoice(id)
-        return "choice";
-    }
-	 */
+	@RequestMapping(value = "/readform", method = RequestMethod.GET)
+    public String showReadForm(Model model) {
+		List<Choice> choiceList = dataHandler.ReadAll();
+		model.addAttribute("choice", choiceList);
+		return "read_Choice";
+	}
+
+	@RequestMapping(value = "/readform/{id}",  method = RequestMethod.GET)
+    public String submitRead(@PathVariable("id") String id, Model model) {
+		try {
+			dataHandler.Read(UUID.fromString(id));
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("id", id);
+		return "itemread";
+	}
 
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("choice") Choice choice, BindingResult result, ModelMap model) {
