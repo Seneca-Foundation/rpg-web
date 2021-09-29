@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create a NPC</title>
+</head>
+    <body>
+        <h3>Welcome to the NPC Creation Screen</h3>
+        <form action="#" th:action="@{/Npc/readform}" method="GET" th:object="${Npc}">
+             <table> 
+                <tr>
+                    <td><label>Name</label></td>
+                    <td><p th:text="'Name: ' + ${Npc.name} "></p></td>
+                </tr>
+                <tr>
+                    <td><label>Age</label></td>
+                    <td><p th:text="'Age: ' + ${Npc.age} "></p></td>
+                </tr>
+                <tr>
+                    <td><label>Gender</label></td>
+                    <td><p th:text="'Sex: ' + ${Npc.sex} "></p></td>
+                </tr>
+                <tr>
+                    <td><label>Health</label></td>
+                    <td><p th:text="'Health: ' + ${Npc.Health}"></p></td>
+                </tr>
+                <tr>
+                    <td><label>Mana</label></td>
+                    <td><p th:text="'Mana: ' + ${Npc.Mana}"></p></td>
+                </tr>
+                <tr>
+                    <td><label>Stamina</label></td>
+                    <td><p th:text="'Stamina: ' + ${Npc.Stamina}"></p></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit"/></td>
+                </tr>
+            </table>
+        </form:form>
+    </body>
+</html>

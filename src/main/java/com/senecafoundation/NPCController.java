@@ -40,19 +40,31 @@ public class NPCController
         return "Npc";
     }
 
+    @GetMapping("/readform")
+    public String showFormRead(Model model) {
+        NPC Npc = new NPC();
+        model.addAttribute("Npc", Npc);
+        return "read_Npc";
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ICharacter getCharacter(@PathVariable UUID id) throws Exception {
         return dataHandler.Read(id);
     }
 
-    @RequestMapping(value = "/readform", method = RequestMethod.GET)
-    public String GetCharacter(@ModelAttribute("Npc") UUID id, BindingResult result, ModelMap model) throws Exception {
-        if (result.hasErrors()) {
-            return "error"; 
-        }
-        dataHandler.Read(id);
-        return "Npc";
-    }
+    // @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    // public ICharacter getCharacter(@PathVariable UUID id) throws Exception {
+    //     return dataHandler.Read(id);
+    // }
+
+    // @RequestMapping(value = "/readform", method = RequestMethod.GET)
+    // public String GetCharacter(@ModelAttribute("Npc") UUID id, BindingResult result, ModelMap model) throws Exception {
+    //     if (result.hasErrors()) {
+    //         return "error"; 
+    //     }
+    //     dataHandler.Read(id);
+    //     return "Npc";
+    // }
 
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("Npc") NPC Npc, BindingResult result, ModelMap model) {
