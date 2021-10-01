@@ -49,14 +49,36 @@ public class ScenarioController
     }
 	 */
 
-    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String showFormRead(@PathVariable("id") String Id, Model model) throws Exception {
+        Scenario scenario = (Scenario) dataHandler.Read(UUID.fromString(Id));
+        model.addAttribute("scenario",scenario);
+        return "scenario";
+    }
+
+    @RequestMapping(value ="/updateform/{id}", method = RequestMethod.GET)
+    public String showUpdateForm(@PathVariable("id") String Id, Model model) throws Exception {
+        Scenario scenario = (Scenario) dataHandler.Read(UUID.fromString(Id));
+        model.addAttribute("scenario", scenario);
+        return "create_scenario"; 
+    }
+    @RequestMapping(value="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("scenario") Scenario scenario, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
-            return "error";
+            return "Error";
         }
         dataHandler.Update(scenario);
-        return "scenario"; 
+        return "scenario";   
     }
+
+    // @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
+    // public String change(@ModelAttribute("scenario") Scenario scenario, BindingResult result, ModelMap model) {
+    //     if (result.hasErrors()) {
+    //         return "error";
+    //     }
+    //     dataHandler.Update(scenario);
+    //     return "scenario"; 
+    // }
 
     @GetMapping("/deleteform")
     public String showFormDelete(Model model) {

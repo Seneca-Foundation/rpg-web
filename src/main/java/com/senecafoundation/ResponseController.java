@@ -50,14 +50,36 @@ public class ResponseController
     }
 	 */
 
-    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String showFormRead(@PathVariable("id") String Id, Model model) throws Exception {
+        Response response = (Response) dataHandler.Read(UUID.fromString(Id));
+        model.addAttribute("response",response);
+        return "response";
+    }
+
+    @RequestMapping(value ="/updateform/{id}", method = RequestMethod.GET)
+    public String showUpdateForm(@PathVariable("id") String Id, Model model) throws Exception {
+        Response response = (Response) dataHandler.Read(UUID.fromString(Id));
+        model.addAttribute("response", response);
+        return "create_response"; 
+    }
+    @RequestMapping(value="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("response") Response response, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
-            return "error";
+            return "Error";
         }
         dataHandler.Update(response);
-        return "response"; 
+        return "response";   
     }
+
+    // @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
+    // public String change(@ModelAttribute("response") Response response, BindingResult result, ModelMap model) {
+    //     if (result.hasErrors()) {
+    //         return "error";
+    //     }
+    //     dataHandler.Update(response);
+    //     return "response"; 
+    // }
 
     @GetMapping("/deleteform")
     public String showFormDelete(Model model) {
