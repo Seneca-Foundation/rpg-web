@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 @Controller
 @RequestMapping("Npc")
 public class NPCController 
@@ -40,22 +41,8 @@ public class NPCController
         return "Npc";
     }
 
-    // @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    // public ICharacter getCharacter(@PathVariable UUID id) throws Exception {
-    //     return dataHandler.Read(id);
-    // }
-
-    // @RequestMapping(value = "/readform", method = RequestMethod.GET)
-    // public String GetCharacter(@ModelAttribute("Npc") UUID id, BindingResult result, ModelMap model) throws Exception {
-    //     if (result.hasErrors()) {
-    //         return "error"; 
-    //     }
-    //     dataHandler.Read(id);
-    //     return "Npc";
-    // }
-
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String showFormRead(@PathVariable("id") String Id, Model model) throws Exception {
+    public String showFormRead(@PathVariable("id") String Id, ModelMap model) throws Exception {
         NPC npc = (NPC) dataHandler.Read(UUID.fromString(Id));
         model.addAttribute("Npc",npc);
         return "Npc";

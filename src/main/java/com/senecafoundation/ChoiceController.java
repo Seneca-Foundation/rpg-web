@@ -40,19 +40,8 @@ public class ChoiceController
         return "choice";
     }
 
-    /* Place Holder for Read
-        @RequestMapping(value = "/readform", method = RequestMethod.GET)
-    public String GetCharacter(@ModelAttribute("choice") Choice choice, BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return "error"; 
-        }
-        dataHandler.ReadChoice(id)
-        return "choice";
-    }
-	 */
-
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String showFormRead(@PathVariable("id") String Id, Model model) throws Exception {
+    public String showFormRead(@PathVariable("id") String Id, ModelMap model) throws Exception {
         Choice choice = (Choice) dataHandler.Read(UUID.fromString(Id));
         model.addAttribute("choice",choice);
         return "choice";
@@ -72,15 +61,6 @@ public class ChoiceController
         dataHandler.Update(choice);
         return "choice";   
     }
-
-    // @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
-    // public String change(@ModelAttribute("choice") Choice choice, BindingResult result, ModelMap model) {
-    //     if (result.hasErrors()) {
-    //         return "error";
-    //     }
-    //     dataHandler.Update(choice);
-    //     return "choice"; 
-    // }
 
     @GetMapping("/deleteform")
     public String showFormDelete(Model model) {

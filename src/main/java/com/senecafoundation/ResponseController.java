@@ -39,19 +39,8 @@ public class ResponseController
         return "response";
     }
 
-    /* Place Holder for Read
-        @RequestMapping(value = "/readform", method = RequestMethod.GET)
-    public String GetCharacter(@ModelAttribute("response") Response response, BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return "error"; 
-        }
-        dataHandler.ReadResponse(id)
-        return "response";
-    }
-	 */
-
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String showFormRead(@PathVariable("id") String Id, Model model) throws Exception {
+    public String showFormRead(@PathVariable("id") String Id, ModelMap model) throws Exception {
         Response response = (Response) dataHandler.Read(UUID.fromString(Id));
         model.addAttribute("response",response);
         return "response";
