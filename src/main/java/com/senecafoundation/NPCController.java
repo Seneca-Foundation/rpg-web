@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("Npc")
 public class NPCController 
 {
-    UUID ID;
+    UUID id;
     @Autowired
     NpcDataHandler dataHandler;
 
