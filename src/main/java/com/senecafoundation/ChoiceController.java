@@ -40,32 +40,27 @@ public class ChoiceController
         return "choice";
     }
 
-	@RequestMapping(value = "/readform", method = RequestMethod.GET)
-    public String showReadForm(Model model) {
-		List<Choice> choiceList = dataHandler.ReadAll();
-		model.addAttribute("choice", choiceList);
-		return "read_Choice";
-	}
-
-	@RequestMapping(value = "/readform/{id}",  method = RequestMethod.GET)
-    public String submitRead(@PathVariable("id") String id, Model model) {
+	@RequestMapping(value = "/{id}",  method = RequestMethod.GET)
+    public String submitRead(@PathVariable("id") String id, ModelMap model) {
 		try {
-			dataHandler.Read(UUID.fromString(id));
+		Choice choice = (Choice) dataHandler.Read(UUID.fromString(id));
+		model.addAttribute("choice", choice);
 		} catch(Exception e) {
-			e.printStackTrace();
 		}
-		model.addAttribute("id", id);
-		return "itemread";
+		return "choice";
+
 	}
 
-    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
-    public String change(@ModelAttribute("choice") Choice choice, BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return "error";
-        }
-        dataHandler.Update(choice);
-        return "choice"; 
-    }
+    @RequestMapping(value ="/updateform/{id}", method = RequestMethod.PUT)
+    public String change(@ModelAttribute("id") String id, BindingResult result, Model model) {
+		try {
+        Choice choice = (Choice) dataHandler.Read(UUID.fromString(id));
+		model.addAttribute("choice", choice);
+		} catch(Exception e) {
+		}
+		
+		return "choice";
+	}
 
     @GetMapping("/deleteform")
     public String showFormDelete(Model model) {
