@@ -6,7 +6,11 @@
     <body>
         <h3>Welcome to the NPC Creation Screen</h3>
         <form action="#" th:action="@{/Npc/createform}" method="post" th:object="${Npc}">
+            
              <table> 
+                 <tr>
+                    <td><input type="hidden" th:field="*{ID}" /></td>
+                 </tr> 
                 <tr>
                     <td><label>Name</label></td>
                     <td><input type="text" th:field="*{name}" /></td>

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("Npc")
 public class NPCController 
 {
+    UUID ID;
     @Autowired
     NpcDataHandler dataHandler;
 
@@ -51,18 +52,17 @@ public class NPCController
     @RequestMapping(value ="/updateform/{id}", method = RequestMethod.GET)
     public String showUpdateForm(@PathVariable("id") String Id, Model model) throws Exception {
         NPC npc = (NPC) dataHandler.Read(UUID.fromString(Id));
-        dataHandler.Update(npc);
         model.addAttribute("Npc", npc);
         return "create_Npc"; 
     }
-    // @RequestMapping(value="/updateform", method = RequestMethod.PUT)
-    // public String change(@ModelAttribute("Npc") NPC npc, BindingResult result, ModelMap model) {
-    //     if (result.hasErrors()) {
-    //         return "Error";
-    //     }
-    //     dataHandler.Update(npc);
-    //     return "Npc";   
-    // }
+    @RequestMapping(value="/updateform", method = RequestMethod.PUT)
+    public String change(NPC npc, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "Error";
+        }
+        dataHandler.Update(npc);
+        return "Npc";   
+    }
 
     @GetMapping("/deleteform")
     public String showFormDelete(Model model) {
