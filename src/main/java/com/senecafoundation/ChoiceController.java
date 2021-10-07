@@ -53,12 +53,13 @@ public class ChoiceController
         model.addAttribute("choice", choice);
         return "create_choice"; 
     }
-    @RequestMapping(value="/updateform", method = RequestMethod.PUT)
-    public String change(@ModelAttribute("choice") Choice choice, BindingResult result, ModelMap model) {
+    @RequestMapping(value="/updateform", method = RequestMethod.POST)
+    public String change(Choice choice, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
-            return "Error";
+            return "error";
         }
         dataHandler.Update(choice);
+        model.addAttribute("choice",choice);
         return "choice";   
     }
 

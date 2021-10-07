@@ -43,7 +43,7 @@ public class Choice
 
     public void setId(UUID randomUUID) 
     {
-        
+        this.id = randomUUID;
     }
 
     public int getChoiceOptionNumber() {

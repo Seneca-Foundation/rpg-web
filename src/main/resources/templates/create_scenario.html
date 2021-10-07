@@ -5,8 +5,9 @@
 </head>
     <body>
         <h3>Welcome, Enter Scenario</h3>
-        <form action="#" th:action="@{/scenario/createform}" method="post" th:object="${scenario}">
-             <table> 
+        <form action="#" th:action="${scenario.id == null} ? @{/scenario/createform} : @{/scenario/updateform}" method="post" th:object="${scenario}">
+            <input type="hidden" th:field="*{id}" />
+            <table> 
                 <tr>
                     <td><label>Scene Name</label></td>
                     <td><input type="text" th:field="*{sceneName}" /></td>

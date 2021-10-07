@@ -52,23 +52,15 @@ public class ResponseController
         model.addAttribute("response", response);
         return "create_response"; 
     }
-    @RequestMapping(value="/updateform", method = RequestMethod.PUT)
-    public String change(@ModelAttribute("response") Response response, BindingResult result, ModelMap model) {
+    @RequestMapping(value="/updateform", method = RequestMethod.POST)
+    public String change(Response response, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
-            return "Error";
+            return "error";
         }
         dataHandler.Update(response);
+        model.addAttribute("response",response);
         return "response";   
     }
-
-    // @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
-    // public String change(@ModelAttribute("response") Response response, BindingResult result, ModelMap model) {
-    //     if (result.hasErrors()) {
-    //         return "error";
-    //     }
-    //     dataHandler.Update(response);
-    //     return "response"; 
-    // }
 
     @GetMapping("/deleteform")
     public String showFormDelete(Model model) {

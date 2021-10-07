@@ -5,8 +5,9 @@
 </head>
     <body>
         <h3>Welcome, Create a Response</h3>
-        <form action="#" th:action="@{/response/createform}" method="post" th:object="${response}">
-             <table> 
+        <form action="#" th:action="${response.id == null} ? @{/response/createform} : @{/response/updateform}" method="post" th:object="${response}">
+            <input type="hidden" th:field="*{id}" />
+            <table> 
                 <tr>
                     <td><label>ResponseText</label></td>
                     <td><input type="text" th:field="*{responseText}" /></td>

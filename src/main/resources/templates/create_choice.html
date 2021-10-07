@@ -6,8 +6,9 @@
 </head>
     <body>
         <h3>Welcome, Create a Choice</h3>
-        <form action="#" th:action="@{/choice/createform}" method="post" th:object="${choice}">
-             <table> 
+        <form action="#" th:action="${choice.id == null} ? @{/choice/createform} : @{/choice/updateform}" method="post" th:object="${choice}">
+            <input type="hidden" th:field="*{id}" />
+            <table> 
                 <tr>
                     <td><label>ChoiceOptionNumber</label></td>
                     <td><input type="text" th:field="*{choiceOptionNumber}" /></td>

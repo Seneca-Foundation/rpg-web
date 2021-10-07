@@ -51,12 +51,13 @@ public class ScenarioController
         model.addAttribute("scenario", scenario);
         return "create_scenario"; 
     }
-    @RequestMapping(value="/updateform", method = RequestMethod.PUT)
-    public String change(@ModelAttribute("scenario") Scenario scenario, BindingResult result, ModelMap model) {
+    @RequestMapping(value="/updateform", method = RequestMethod.POST)
+    public String change(Scenario scenario, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
-            return "Error";
+            return "error";
         }
         dataHandler.Update(scenario);
+        model.addAttribute("scenario",scenario);
         return "scenario";   
     }
 
