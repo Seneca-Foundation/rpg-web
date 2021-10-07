@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("Npc")
 public class NPCController 
 {
-    UUID id;
     @Autowired
     NpcDataHandler dataHandler;
 
@@ -55,12 +54,13 @@ public class NPCController
         model.addAttribute("Npc", npc);
         return "create_Npc"; 
     }
-    @RequestMapping(value="/updateform", method = RequestMethod.PUT)
+    @RequestMapping(value="/updateform", method = RequestMethod.POST)
     public String change(NPC npc, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
-            return "Error";
+            return "error";
         }
         dataHandler.Update(npc);
+        model.addAttribute("Npc",npc);
         return "Npc";   
     }
 
