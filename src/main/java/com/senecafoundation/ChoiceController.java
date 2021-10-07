@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("choice")
 public class ChoiceController 
 {
+	UUID id;
     @Autowired
     ChoiceDataHandler<Choice> dataHandler;
 
