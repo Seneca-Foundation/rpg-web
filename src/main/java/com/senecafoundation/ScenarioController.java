@@ -38,24 +38,27 @@ public class ScenarioController
         return "scenario";
     }
 
-    /* Place Holder for Read
-        @RequestMapping(value = "/readform", method = RequestMethod.GET)
-    public String GetCharacter(@ModelAttribute("scenario") Scenario scenario, BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return "error"; 
-        }
-        dataHandler.ReadCharacter(id)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String showFormRead(@PathVariable("id") String Id, ModelMap model) throws Exception {
+        Scenario scenario = (Scenario) dataHandler.Read(UUID.fromString(Id));
+        model.addAttribute("scenario",scenario);
         return "scenario";
     }
-	 */
 
-    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
-    public String change(@ModelAttribute("scenario") Scenario scenario, BindingResult result, ModelMap model) {
+    @RequestMapping(value ="/updateform/{id}", method = RequestMethod.GET)
+    public String showUpdateForm(@PathVariable("id") String Id, Model model) throws Exception {
+        Scenario scenario = (Scenario) dataHandler.Read(UUID.fromString(Id));
+        model.addAttribute("scenario", scenario);
+        return "create_scenario"; 
+    }
+    @RequestMapping(value="/updateform", method = RequestMethod.POST)
+    public String change(Scenario scenario, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
         dataHandler.Update(scenario);
-        return "scenario"; 
+        model.addAttribute("scenario",scenario);
+        return "scenario";   
     }
 
     @GetMapping("/deleteform")

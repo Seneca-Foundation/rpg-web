@@ -5,8 +5,9 @@
 </head>
     <body>
         <h3>Welcome to the NPC Creation Screen</h3>
-        <form action="#" th:action="@{/Npc/createform}" method="post" th:object="${Npc}">
-             <table> 
+        <form action="#" th:action="${Npc.id == null} ? @{/Npc/createform} : @{/Npc/updateform}" method="post" th:object="${Npc}">
+            <input type="hidden" th:field="*{id}" />
+            <table> 
                 <tr>
                     <td><label>Name</label></td>
                     <td><input type="text" th:field="*{name}" /></td>

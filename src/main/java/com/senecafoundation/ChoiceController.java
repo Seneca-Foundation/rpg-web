@@ -2,7 +2,10 @@ package com.senecafoundation;
 import java.util.UUID;
 import java.util.List;
 import com.senecafoundation.DataHandler.ChoiceDataHandler;
+import com.senecafoundation.DataHandler.ResponseDataHandler;
 import com.senecafoundation.Scene.Choice;
+import com.senecafoundation.Scene.Response;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,11 +23,15 @@ public class ChoiceController
 {
     @Autowired
     ChoiceDataHandler<Choice> dataHandler;
+    @Autowired
+    ResponseDataHandler<Response> responseDataHandler;
 
     @GetMapping("/createform")
     public String showForm(Model model) {
         Choice choice = new Choice();
+        List<Response> responses = responseDataHandler.ReadAll();
         model.addAttribute("choice", choice);
+        model.addAttribute("possibleResponses", responses);
         return "create_choice";
     }
     
@@ -40,24 +47,29 @@ public class ChoiceController
         return "choice";
     }
 
-    /* Place Holder for Read
-        @RequestMapping(value = "/readform", method = RequestMethod.GET)
-    public String GetCharacter(@ModelAttribute("choice") Choice choice, BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return "error"; 
-        }
-        dataHandler.ReadChoice(id)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String showFormRead(@PathVariable("id") String Id, ModelMap model) throws Exception {
+        Choice choice = (Choice) dataHandler.Read(UUID.fromString(Id));
+        model.addAttribute("choice",choice);
         return "choice";
     }
-	 */
 
-    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
-    public String change(@ModelAttribute("choice") Choice choice, BindingResult result, ModelMap model) {
+    @RequestMapping(value ="/updateform/{id}", method = RequestMethod.GET)
+    public String showUpdateForm(@PathVariable("id") String Id, Model model) throws Exception {
+        Choice choice = (Choice) dataHandler.Read(UUID.fromString(Id));
+        List<Response> responses = responseDataHandler.ReadAll();
+        model.addAttribute("choice", choice);
+        model.addAttribute("possibleResponses", responses);
+        return "create_choice"; 
+    }
+    @RequestMapping(value="/updateform", method = RequestMethod.POST)
+    public String change(Choice choice, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
         dataHandler.Update(choice);
-        return "choice"; 
+        model.addAttribute("choice",choice);
+        return "choice";   
     }
 
     @GetMapping("/deleteform")
