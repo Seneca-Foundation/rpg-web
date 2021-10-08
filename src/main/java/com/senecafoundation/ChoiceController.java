@@ -57,7 +57,9 @@ public class ChoiceController
     @RequestMapping(value ="/updateform/{id}", method = RequestMethod.GET)
     public String showUpdateForm(@PathVariable("id") String Id, Model model) throws Exception {
         Choice choice = (Choice) dataHandler.Read(UUID.fromString(Id));
+        List<Response> responses = responseDataHandler.ReadAll();
         model.addAttribute("choice", choice);
+        model.addAttribute("possibleResponses", responses);
         return "create_choice"; 
     }
     @RequestMapping(value="/updateform", method = RequestMethod.POST)
