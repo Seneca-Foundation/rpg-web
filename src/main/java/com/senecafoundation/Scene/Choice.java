@@ -50,12 +50,24 @@ public class Choice
         return choiceOptionNumber;
     }
 
+    public void setChoiceOptionNumber(int choiceOptionNumber) {
+        this.choiceOptionNumber = choiceOptionNumber;
+    }
+
     public Response getResponse() {
         return response;
     }
 
+    public void setResponse(Response response) {
+        this.response = response;
+    }
+
     public String getChoiceText() {
         return choiceText;
+    }
+
+    public void setChoiceText(String choiceText) {
+        this.choiceText = choiceText;
     }
 
     
