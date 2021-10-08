@@ -19,7 +19,14 @@
                 </tr>
                 <tr>
                     <td><label>Response</label></td>
-                    <td><input type="text" th:field="*{response}" /></td>
+                    <td>
+                        <!-- <input type="text" th:field="*{response}" /> -->
+                        <select th:field="*{response}">
+                            <option th:each="possibleResponse : ${possibleResponses}"
+                                    th:text="${possibleResponse.responseText}"
+                                    th:value="${possibleResponse.id}">
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Submit"/></td>

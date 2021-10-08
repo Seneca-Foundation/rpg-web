@@ -2,7 +2,10 @@ package com.senecafoundation;
 import java.util.UUID;
 import java.util.List;
 import com.senecafoundation.DataHandler.ChoiceDataHandler;
+import com.senecafoundation.DataHandler.ResponseDataHandler;
 import com.senecafoundation.Scene.Choice;
+import com.senecafoundation.Scene.Response;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,11 +23,15 @@ public class ChoiceController
 {
     @Autowired
     ChoiceDataHandler<Choice> dataHandler;
+    @Autowired
+    ResponseDataHandler<Response> responseDataHandler;
 
     @GetMapping("/createform")
     public String showForm(Model model) {
         Choice choice = new Choice();
+        List<Response> responses = responseDataHandler.ReadAll();
         model.addAttribute("choice", choice);
+        model.addAttribute("possibleResponses", responses);
         return "create_choice";
     }
     
