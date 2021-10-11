@@ -35,4 +35,10 @@ public class NPCRESTController
         return foundNpc;
     }
 
+    @GetMapping("/Npc")
+    List<ICharacter> all() 
+    {
+        return dataHandler.ReadAll();
+    }
+
 }
