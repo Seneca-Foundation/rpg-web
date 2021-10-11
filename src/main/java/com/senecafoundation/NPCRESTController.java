@@ -28,6 +28,11 @@ public class NPCRESTController
         return newNpc;
     }
 
-    
+    @GetMapping("/Npc/{id}")
+    NPC findNpc(@PathVariable String Id) throws Exception 
+    {
+        NPC foundNpc = (NPC) dataHandler.Read(UUID.fromString(Id));
+        return foundNpc;
+    }
 
 }
