@@ -36,9 +36,16 @@ public class NPCRESTController
     }
 
     @GetMapping("/Npc")
-    List<ICharacter> all() 
+    List<ICharacter> NpcList() 
     {
         return dataHandler.ReadAll();
+    }
+
+    @PutMapping("/Npc/{id}")
+    NPC updateNpc(@RequestBody NPC newNpc, @PathVariable String Id) throws Exception
+    {
+        newNpc = (NPC) dataHandler.Read(UUID.fromString(Id));
+        return (NPC)dataHandler.Update(newNpc);
     }
 
     @DeleteMapping("/Npc/{id}")
