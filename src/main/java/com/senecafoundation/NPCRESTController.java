@@ -41,4 +41,10 @@ public class NPCRESTController
         return dataHandler.ReadAll();
     }
 
+    @DeleteMapping("/Npc/{id}")
+    void deleteNpc(@PathVariable String Id) throws Exception 
+    {
+        dataHandler.Delete(UUID.fromString(Id));
+    }
+
 }
