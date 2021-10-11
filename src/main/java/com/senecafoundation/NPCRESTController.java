@@ -20,5 +20,14 @@ public class NPCRESTController
 {
     @Autowired
     NpcDataHandler dataHandler;
+
+    @PostMapping("/Npc")
+    NPC newNpc(@RequestBody NPC newNpc) 
+    {
+        dataHandler.Create(newNpc);
+        return newNpc;
+    }
+
     
+
 }
