@@ -35,7 +35,7 @@ public class ResponseRESTController
     }
 
     @GetMapping("/response")
-    List<Response> ResponseList() 
+    List<Response> responseList() 
     {
         return dataHandler.ReadAll();
     }
@@ -48,7 +48,7 @@ public class ResponseRESTController
     }
 
     @DeleteMapping("/response/{id}")
-    void deleteNpc(@PathVariable String Id) throws Exception 
+    void deleteResponse(@PathVariable String Id) throws Exception 
     {
         dataHandler.Delete(UUID.fromString(Id));
     }
