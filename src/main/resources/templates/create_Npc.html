@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <title>Create a NPC</title>
+    <link rel="stylesheet" th:href="@{/css/rpg.css}">
 </head>
     <body>
-        <h3>Welcome to the NPC Creation Screen</h3>
+        <!-- <h3>Welcome to the NPC Creation Screen</h3>
         <form action="#" th:action="${Npc.id == null} ? @{/Npc/createform} : @{/Npc/updateform}" method="post" th:object="${Npc}">
             <input type="hidden" th:field="*{id}" />
             <table> 
@@ -36,6 +37,60 @@
                     <td><input type="submit" value="Submit"/></td>
                 </tr>
             </table>
-        </form:form>
+        </form:form> -->
+        <form action="#" th:action="${Npc.id == null} ? @{/Npc/createform} : @{/Npc/updateform}" method="post" th:object="${Npc}">
+        <input type="hidden" th:field="*{id}" />
+        <div class="card">
+            <h2>Create NPC</h2>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" th:field="*{name}" />
+                </div>
+              </div>
+          
+              <div class="col">
+                <div class="form-group">
+                  <label>Age</label>
+                  <input type="text" th:field="*{age}" />
+                </div>
+              </div>
+          
+              <div class="col">
+                <div class="form-group">
+                  <label>Sex</label>
+                  <input type="text" th:field="*{sex}" />
+                </div>
+              </div>
+          
+              <div class="col">
+                <div class="form-group">
+                  <label>Health</label>
+                  <input type="text" th:field="*{Health}" />
+                </div>
+              </div>
+          
+              <div class="col">
+                <div class="form-group">
+                  <label>Mana</label>
+                  <input type="text" th:field="*{Mana}" />
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="form-group">
+                  <label>Stamina</label>
+                  <input type="text" th:field="*{Stamina}" />
+                </div>
+              </div>
+          
+              <div class="col">
+                <input type="submit" value="Submit">
+              </div>
+            </form:form>
+            </div>
+          </div>
+          
     </body>
 </html>
