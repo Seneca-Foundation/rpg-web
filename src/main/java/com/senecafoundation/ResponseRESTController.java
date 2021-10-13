@@ -43,8 +43,16 @@ public class ResponseRESTController
     @PutMapping("/response/{id}")
     Response updateResponse(@RequestBody Response newResponse, @PathVariable String Id) throws Exception
     {
-        newResponse = (Response) dataHandler.Read(UUID.fromString(Id));
-        return (Response)dataHandler.Update(newResponse);
+        Response response = (Response) dataHandler.Read(UUID.fromString(Id));
+        if(response != null)
+        {
+            newResponse.setId(response.getId());
+            return dataHandler.Update(newResponse);
+        }
+        else
+        {
+            throw new Exception("No Response found with id: " + Id);
+        }
     }
 
     @DeleteMapping("/response/{id}")

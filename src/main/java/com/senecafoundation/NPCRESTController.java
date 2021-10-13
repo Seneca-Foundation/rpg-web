@@ -44,8 +44,17 @@ public class NPCRESTController
     @PutMapping("/Npc/{id}")
     NPC updateNpc(@RequestBody NPC newNpc, @PathVariable String Id) throws Exception
     {
-        newNpc = (NPC) dataHandler.Read(UUID.fromString(Id));
-        return (NPC)dataHandler.Update(newNpc);
+        NPC npc = (NPC) dataHandler.Read(UUID.fromString(Id));
+        if(npc != null)
+        {
+            newNpc.setId(npc.getId());
+            return (NPC)dataHandler.Update(newNpc);
+        }
+        else
+        {
+            throw new Exception("No Npc found with id: " + Id);
+        }
+        
     }
 
     @DeleteMapping("/Npc/{id}")

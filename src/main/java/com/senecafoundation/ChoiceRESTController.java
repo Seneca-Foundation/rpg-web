@@ -47,8 +47,16 @@ public class ChoiceRESTController
     @PutMapping("/choice/{id}")
     Choice updateChoice(@RequestBody Choice newChoice, @PathVariable String Id) throws Exception
     {
-        newChoice = (Choice) dataHandler.Read(UUID.fromString(Id));
-        return (Choice)dataHandler.Update(newChoice);
+        Choice choice = (Choice) dataHandler.Read(UUID.fromString(Id));
+        if(choice != null)
+        {
+            newChoice.setId(choice.getId());
+            return dataHandler.Update(newChoice);
+        }
+        else
+        {
+            throw new Exception("No Choice found with id: " + Id);
+        }
     }
 
     @DeleteMapping("/choice/{id}")
