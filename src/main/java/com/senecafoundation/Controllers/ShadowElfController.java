@@ -1,4 +1,4 @@
-package com.senecafoundation;
+package com.senecafoundation.Controllers;
 
 import java.util.UUID;
 import com.senecafoundation.CharacterTypes.ICharacter;
