@@ -1,0 +1,45 @@
+html, body, pre, code, kbd, samp {
+    font-family: "Press+Start+2P";
+}
+
+.mainTitle {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#buttonTable {
+    margin-left: 80px;
+}
+
+.delete-button {
+    text-align: center;
+    width: 300px;
+    height: 50px;
+}
+
+.nes-container table{
+    width: 600px;
+    height: 500px;
+}
+
+#trashbtnpic {
+    padding: 1px;
+    padding-right: 1px;
+    width: 30px;
+    height: 30px;
+}
+
+#SubmitBtn {
+    height: 50px;
+    width: 200px;
+}
+
+#backbtn {
+    height: 50px;
+    width: 200px;
+    text-align: center;
+}
+
+#pctitle {
+    margin-left: 90px;
+}
