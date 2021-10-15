@@ -21,27 +21,27 @@ public class NPCRESTController
     @Autowired
     NpcDataHandler dataHandler;
 
-    @PostMapping("/Npc")
+    @PostMapping("/Npcs")
     NPC newNpc(@RequestBody NPC newNpc) 
     {
         dataHandler.Create(newNpc);
         return newNpc;
     }
 
-    @GetMapping("/Npc/{id}")
+    @GetMapping("/Npcs/{id}")
     NPC findNpc(@PathVariable String Id) throws Exception 
     {
         NPC foundNpc = (NPC) dataHandler.Read(UUID.fromString(Id));
         return foundNpc;
     }
 
-    @GetMapping("/Npc")
+    @GetMapping("/Npcs")
     List<ICharacter> NpcList() 
     {
         return dataHandler.ReadAll();
     }
 
-    @PutMapping("/Npc/{id}")
+    @PutMapping("/Npcs/{id}")
     NPC updateNpc(@RequestBody NPC newNpc, @PathVariable String Id) throws Exception
     {
         NPC npc = (NPC) dataHandler.Read(UUID.fromString(Id));
@@ -57,7 +57,7 @@ public class NPCRESTController
         
     }
 
-    @DeleteMapping("/Npc/{id}")
+    @DeleteMapping("/Npcs/{id}")
     void deleteNpc(@PathVariable String Id) throws Exception 
     {
         dataHandler.Delete(UUID.fromString(Id));

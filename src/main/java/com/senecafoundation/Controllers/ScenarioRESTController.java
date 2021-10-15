@@ -20,27 +20,27 @@ public class ScenarioRESTController
     @Autowired
     SceneDataHandler<Scenario> dataHandler;
 
-    @PostMapping("/scenario")
+    @PostMapping("/scenarios")
     Scenario newScenario(@RequestBody Scenario newScenario) 
     {
         dataHandler.Create(newScenario);
         return newScenario;
     }
 
-    @GetMapping("/scenario/{id}")
+    @GetMapping("/scenarios/{id}")
     Scenario findScenario(@PathVariable String Id) throws Exception 
     {
         Scenario foundScenario = (Scenario) dataHandler.Read(UUID.fromString(Id));
         return foundScenario;
     }
 
-    @GetMapping("/scenario")
+    @GetMapping("/scenarios")
     List<Scenario> scenarioList() 
     {
         return dataHandler.ReadAll();
     }
 
-    @PutMapping("/scenario/{id}")
+    @PutMapping("/scenarios/{id}")
     Scenario updateScenario(@RequestBody Scenario newScenario, @PathVariable String Id) throws Exception
     {
         Scenario scenario = (Scenario) dataHandler.Read(UUID.fromString(Id));
@@ -55,7 +55,7 @@ public class ScenarioRESTController
         }
     }
 
-    @DeleteMapping("/scenario/{id}")
+    @DeleteMapping("/scenarios/{id}")
     void deleteScenario(@PathVariable String Id) throws Exception 
     {
         dataHandler.Delete(UUID.fromString(Id));

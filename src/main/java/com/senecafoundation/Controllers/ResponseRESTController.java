@@ -20,27 +20,27 @@ public class ResponseRESTController
     @Autowired
     ResponseDataHandler<Response> dataHandler;
 
-    @PostMapping("/response")
+    @PostMapping("/responses")
     Response newResponse(@RequestBody Response newResponse) 
     {
         dataHandler.Create(newResponse);
         return newResponse;
     }
 
-    @GetMapping("/response/{id}")
+    @GetMapping("/responses/{id}")
     Response findResponse(@PathVariable String Id) throws Exception 
     {
         Response foundResponse = (Response) dataHandler.Read(UUID.fromString(Id));
         return foundResponse;
     }
 
-    @GetMapping("/response")
+    @GetMapping("/responses")
     List<Response> responseList() 
     {
         return dataHandler.ReadAll();
     }
 
-    @PutMapping("/response/{id}")
+    @PutMapping("/responses/{id}")
     Response updateResponse(@RequestBody Response newResponse, @PathVariable String Id) throws Exception
     {
         Response response = (Response) dataHandler.Read(UUID.fromString(Id));
@@ -55,7 +55,7 @@ public class ResponseRESTController
         }
     }
 
-    @DeleteMapping("/response/{id}")
+    @DeleteMapping("/responses/{id}")
     void deleteResponse(@PathVariable String Id) throws Exception 
     {
         dataHandler.Delete(UUID.fromString(Id));

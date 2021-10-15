@@ -24,27 +24,27 @@ public class ChoiceRESTController
     @Autowired
     ResponseDataHandler<Response> responseDataHandler;
 
-    @PostMapping("/choice")
+    @PostMapping("/choices")
     Choice newChoice(@RequestBody Choice newChoice) 
     {
         dataHandler.Create(newChoice);
         return newChoice;
     }
 
-    @GetMapping("/choice/{id}")
+    @GetMapping("/choices/{id}")
     Choice findChoice(@PathVariable String Id) throws Exception 
     {
         Choice foundChoice = (Choice) dataHandler.Read(UUID.fromString(Id));
         return foundChoice;
     }
 
-    @GetMapping("/choice")
+    @GetMapping("/choices")
     List<Choice> choiceList() 
     {
         return dataHandler.ReadAll();
     }
 
-    @PutMapping("/choice/{id}")
+    @PutMapping("/choices/{id}")
     Choice updateChoice(@RequestBody Choice newChoice, @PathVariable String Id) throws Exception
     {
         Choice choice = (Choice) dataHandler.Read(UUID.fromString(Id));
@@ -59,7 +59,7 @@ public class ChoiceRESTController
         }
     }
 
-    @DeleteMapping("/choice/{id}")
+    @DeleteMapping("/choices/{id}")
     void deleteChoice(@PathVariable String Id) throws Exception 
     {
         dataHandler.Delete(UUID.fromString(Id));
