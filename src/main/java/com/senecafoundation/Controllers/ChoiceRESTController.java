@@ -31,7 +31,7 @@ public class ChoiceRESTController
         return newChoice;
     }
 
-    @GetMapping("/choices/{id}")
+    @GetMapping("/choices/{Id}")
     Choice findChoice(@PathVariable String Id) throws Exception 
     {
         Choice foundChoice = (Choice) dataHandler.Read(UUID.fromString(Id));
@@ -44,7 +44,7 @@ public class ChoiceRESTController
         return dataHandler.ReadAll();
     }
 
-    @PutMapping("/choices/{id}")
+    @PutMapping("/choices/{Id}")
     Choice updateChoice(@RequestBody Choice newChoice, @PathVariable String Id) throws Exception
     {
         Choice choice = (Choice) dataHandler.Read(UUID.fromString(Id));
@@ -59,7 +59,7 @@ public class ChoiceRESTController
         }
     }
 
-    @DeleteMapping("/choices/{id}")
+    @DeleteMapping("/choices/{Id}")
     void deleteChoice(@PathVariable String Id) throws Exception 
     {
         dataHandler.Delete(UUID.fromString(Id));
