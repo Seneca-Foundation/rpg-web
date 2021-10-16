@@ -28,7 +28,7 @@ public class NPCRESTController
         return newNpc;
     }
 
-    @GetMapping("/Npcs/{id}")
+    @GetMapping("/Npcs/{Id}")
     NPC findNpc(@PathVariable String Id) throws Exception 
     {
         NPC foundNpc = (NPC) dataHandler.Read(UUID.fromString(Id));
@@ -41,7 +41,7 @@ public class NPCRESTController
         return dataHandler.ReadAll();
     }
 
-    @PutMapping("/Npcs/{id}")
+    @PutMapping("/Npcs/{Id}")
     NPC updateNpc(@RequestBody NPC newNpc, @PathVariable String Id) throws Exception
     {
         NPC npc = (NPC) dataHandler.Read(UUID.fromString(Id));
@@ -57,7 +57,7 @@ public class NPCRESTController
         
     }
 
-    @DeleteMapping("/Npcs/{id}")
+    @DeleteMapping("/Npcs/{Id}")
     void deleteNpc(@PathVariable String Id) throws Exception 
     {
         dataHandler.Delete(UUID.fromString(Id));
