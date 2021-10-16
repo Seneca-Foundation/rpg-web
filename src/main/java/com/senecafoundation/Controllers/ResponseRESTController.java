@@ -27,7 +27,7 @@ public class ResponseRESTController
         return newResponse;
     }
 
-    @GetMapping("/responses/{id}")
+    @GetMapping("/responses/{Id}")
     Response findResponse(@PathVariable String Id) throws Exception 
     {
         Response foundResponse = (Response) dataHandler.Read(UUID.fromString(Id));
@@ -40,7 +40,7 @@ public class ResponseRESTController
         return dataHandler.ReadAll();
     }
 
-    @PutMapping("/responses/{id}")
+    @PutMapping("/responses/{Id}")
     Response updateResponse(@RequestBody Response newResponse, @PathVariable String Id) throws Exception
     {
         Response response = (Response) dataHandler.Read(UUID.fromString(Id));
@@ -55,7 +55,7 @@ public class ResponseRESTController
         }
     }
 
-    @DeleteMapping("/responses/{id}")
+    @DeleteMapping("/responses/{Id}")
     void deleteResponse(@PathVariable String Id) throws Exception 
     {
         dataHandler.Delete(UUID.fromString(Id));

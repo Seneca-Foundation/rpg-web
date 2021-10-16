@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "11b07400-efc9-4427-a6de-70075df06d4e",
-		"name": "RPG-Web Choice",
+		"_postman_id": "69b07400-efc9-4427-a6de-70075df06d4e",
+		"name": "RPG-Web Scenario",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Create Choice",
+			"name": "Create Scenario",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -18,15 +18,15 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"choiceOptionNumber\":1,\n    \"choiceText\": \"Fight the bear\",\n    \"response\": {\n        \"responseText\": \"The bear scratches you.\",\n        \"resultingSceneIDFromChoce\":\"Test\"\n    }\n}"
+					"raw": "{\n    \"nextSceneID\": \"Next\",\n     \"previousSceneID\": \"Before\",\n     \"sceneName\": \"Death Valley\",\n      \"sceneText\":\"Where Death lurks every passing second\"\n    }\n}"
 				},
 				"url": {
-					"raw": "localhost/choices/",
+					"raw": "localhost/scenarios/",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"choices",
+						"scenarios",
 						""
 					]
 				}
@@ -34,7 +34,7 @@
 			"response": []
 		},
 		{
-			"name": "Update Choice",
+			"name": "Update Scenario",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -46,77 +46,15 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"choiceOptionNumber\":1,\n    \"choiceText\": \"Fight the mudcrab\",\n    \"response\": {\n        \"responseText\": \"The mudcrab pinches you.\",\n        \"resultingSceneIDFromChoce\":\"Test\"\n    }\n}"
+					"raw": "{\n    \"nextSceneID\": \"Next\",\n     \"previousSceneID\": \"Before\",\n     \"sceneName\": \"Death Valley\",\n      \"sceneText\":\"Where Death lurks every passing second\"\n    }\n}"
 				},
 				"url": {
-					"raw": "localhost/choices/6e862688-302c-4962-a84b-3b0df49fd6b3",
+					"raw": "localhost/scenarios/86d506d2-003e-4f91-9ad2-e73ecd37e2d6",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"choices",
-						"6e862688-302c-4962-a84b-3b0df49fd6b3"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get All Choices",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "localhost/choices/",
-					"host": [
-						"localhost"
-					],
-					"path": [
-						"choices",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get A Single Choice",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "localhost/choices/86d506d2-003e-4f91-9ad2-e73ecd37e2d6",
-					"host": [
-						"localhost"
-					],
-					"path": [
-						"choices",
+						"scenarios",
 						"86d506d2-003e-4f91-9ad2-e73ecd37e2d6"
 					]
 				}
@@ -124,7 +62,69 @@
 			"response": []
 		},
 		{
-			"name": "Delete A Single Choice",
+			"name": "Get All Scenarios",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/scenarios/",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"scenarios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get A Single Scenario",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/scenarios/86d506d2-003e-4f91-9ad2-e73ecd37e2d6",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"scenarios",
+						"86d506d2-003e-4f91-9ad2-e73ecd37e2d6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete A Single Scenario",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -139,12 +139,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost/choices/7cd23762-bcdf-4444-a286-3957303ded8d",
+					"raw": "localhost/scenarios/7cd23762-bcdf-4444-a286-3957303ded8d",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"choices",
+						"scenarios",
 						"7cd23762-bcdf-4444-a286-3957303ded8d"
 					]
 				}

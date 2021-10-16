@@ -34,7 +34,7 @@
 			"response": []
 		},
 		{
-			"name": "Update Choice",
+			"name": "Update NPC",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -46,15 +46,15 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"choiceOptionNumber\":1,\n    \"choiceText\": \"Fight the mudcrab\",\n    \"response\": {\n        \"responseText\": \"The mudcrab pinches you.\",\n        \"resultingSceneIDFromChoce\":\"Test\"\n    }\n}"
+					"raw": "{\n    \"name\":\"Warren\",\n    \"age\":41,\n    \"sex\":\"Male\",\n    \"Health\":100,\n    \"Mana\":100,\n    \"Stamina\":100,\n    \"phrases\": [\n        \"This is a test\",\n        \"Another test\"\n    ]\n}"
 				},
 				"url": {
-					"raw": "localhost/choices/6e862688-302c-4962-a84b-3b0df49fd6b3",
+					"raw": "localhost/Npcs/6e862688-302c-4962-a84b-3b0df49fd6b3",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"choices",
+						"Npcs",
 						"6e862688-302c-4962-a84b-3b0df49fd6b3"
 					]
 				}
@@ -62,7 +62,7 @@
 			"response": []
 		},
 		{
-			"name": "Get All Choices",
+			"name": "Get All NPCS",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -80,12 +80,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost/choices/",
+					"raw": "localhost/Npcs/",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"choices",
+						"Npcs",
 						""
 					]
 				}
@@ -93,7 +93,7 @@
 			"response": []
 		},
 		{
-			"name": "Get A Single Choice",
+			"name": "Get A Single NPC",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -111,12 +111,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost/choices/86d506d2-003e-4f91-9ad2-e73ecd37e2d6",
+					"raw": "localhost/Npcs/86d506d2-003e-4f91-9ad2-e73ecd37e2d6",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"choices",
+						"Npcs",
 						"86d506d2-003e-4f91-9ad2-e73ecd37e2d6"
 					]
 				}
@@ -124,7 +124,7 @@
 			"response": []
 		},
 		{
-			"name": "Delete A Single Choice",
+			"name": "Delete A Single NPC",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -139,12 +139,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost/choices/7cd23762-bcdf-4444-a286-3957303ded8d",
+					"raw": "localhost/Npcs/7cd23762-bcdf-4444-a286-3957303ded8d",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"choices",
+						"Npcs",
 						"7cd23762-bcdf-4444-a286-3957303ded8d"
 					]
 				}
