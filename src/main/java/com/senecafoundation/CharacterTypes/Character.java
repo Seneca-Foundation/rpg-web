@@ -18,6 +18,7 @@ public abstract class Character extends BaseStats implements ICharacter
     private String name;
     private int age;
     private String sex;
+    private String sprite_url;
     
     @Id
     @Column(name = "id")
@@ -29,6 +30,12 @@ public abstract class Character extends BaseStats implements ICharacter
     //Encapsulation
     public IDataHandler getDataHandler() {
         return dataHandler;
+    }
+    public String getSprite_url() {
+        return sprite_url;
+    }
+    public void setSprite_url(String sprite_url) {
+        this.sprite_url = sprite_url;
     }
     public String getName()
     {

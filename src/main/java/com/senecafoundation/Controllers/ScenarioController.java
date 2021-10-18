@@ -1,4 +1,4 @@
-package com.senecafoundation;
+package com.senecafoundation.Controllers;
 import java.util.UUID;
 import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;

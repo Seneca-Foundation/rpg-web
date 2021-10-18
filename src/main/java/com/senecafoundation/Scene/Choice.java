@@ -1,6 +1,7 @@
 package com.senecafoundation.Scene;
 
 import javax.persistence.Entity;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.OneToOne;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Choice
     private int choiceOptionNumber;
     private String choiceText;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Response response;
 
     public Choice(int choiceOptionNumber, String choiceText, Response response) 

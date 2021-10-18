@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <title th:text=" ${Npc.name} + ' appears!'"></title>
-<link th:href="@{/css/main.css}" rel="stylesheet" />
+<link th:href="@{/css/rpg.css}" rel="stylesheet" />
 </head>
 <body>
-    <div class="Npc">
+    <!-- <div class="Npc">
         <h1 th:text=" ${Npc.name} + ' appears!'"></h1>
         <p th:text="'Sex: ' + ${Npc.sex} "></p>
         <p th:text="'Age: ' + ${Npc.age} "></p>
@@ -14,6 +14,52 @@
         <p th:text="'Stamina: ' + ${Npc.Stamina}"></p>
         <br>
         <p th:text="'ID: ' + ${Npc.Id}"></p>
-    </div>
+    </div> -->
+
+    <div class="card">
+        <h2>Created A NPC</h2>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label>Name</label>
+              <span th:text="${Npc.name}"></span>
+            </div>
+          </div>
+      
+          <div class="col">
+            <div class="form-group">
+              <label>Age</label>
+              <span th:text="${Npc.age}"></span>
+            </div>
+          </div>
+      
+          <div class="col">
+            <div class="form-group">
+              <label>Sex</label>
+              <span th:text="${Npc.sex}"></span>
+            </div>
+          </div>
+      
+          <div class="col">
+            <div class="form-group">
+              <label>Health</label>
+              <span th:text="${Npc.Health}"></span>
+            </div>
+          </div>
+      
+          <div class="col">
+            <div class="form-group">
+              <label>Mana</label>
+              <span th:text="${Npc.Mana}"></span>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group">
+              <label>Stamina</label>
+              <span th:text="${Npc.Stamina}"></span>
+            </div>
+          </div>
+
 </body>
 </html>

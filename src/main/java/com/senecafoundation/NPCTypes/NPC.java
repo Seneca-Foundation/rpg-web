@@ -22,6 +22,12 @@ public class NPC extends Character implements INPC
     {
         super();
     }
+    public String[] getPhrases() {
+        return phrases;
+    }
+    public void setPhrases(String[] phrases) {
+        this.phrases = phrases;
+    }
     //Methods
     public String PrintPhrases()
     {
