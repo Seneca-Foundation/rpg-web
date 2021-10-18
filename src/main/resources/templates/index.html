@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Welcome to the RPG Web</title>
+        <link rel="stylesheet" th:href="@{/css/test.css}">
+    </head>
+    <body>
+        <header></header>
+        <main>
+            <div id="npc"></div>
+        </main>
+        <footer></footer>
+        <script type="text/javascript">
+            var data = "";
+
+            var xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+
+            xhr.addEventListener("readystatechange", function() {
+            if(this.readyState === 4) {
+                console.log(this.responseText);
+                firstNpc = JSON.parse(this.responseText);
+            }
+            });
+
+            xhr.open("GET", "/Npcs/db93c18f-cde7-4334-8548-22872c5718bb");
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            xhr.send(data);
+        </script>
+    </body>
+</html>

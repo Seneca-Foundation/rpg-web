@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "be009496-2c84-4c5c-b95c-e7fe9275251c",
+		"name": "RPG-Web NPCs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create NPC",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Warren\",\n    \"age\":41,\n    \"sex\":\"Male\",\n    \"Health\":100,\n    \"Mana\":100,\n    \"Stamina\":100,\n    \"phrases\": [\n        \"This is a test\",\n        \"Another test\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "localhost/Npcs/",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Npcs",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update NPC",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Warren\",\n    \"age\":41,\n    \"sex\":\"Male\",\n    \"Health\":100,\n    \"Mana\":100,\n    \"Stamina\":100,\n    \"phrases\": [\n        \"This is a test\",\n        \"Another test\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "localhost/Npcs/6e862688-302c-4962-a84b-3b0df49fd6b3",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Npcs",
+						"6e862688-302c-4962-a84b-3b0df49fd6b3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All NPCS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/Npcs/",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Npcs",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get A Single NPC",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/Npcs/86d506d2-003e-4f91-9ad2-e73ecd37e2d6",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Npcs",
+						"86d506d2-003e-4f91-9ad2-e73ecd37e2d6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete A Single NPC",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/Npcs/7cd23762-bcdf-4444-a286-3957303ded8d",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Npcs",
+						"7cd23762-bcdf-4444-a286-3957303ded8d"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
