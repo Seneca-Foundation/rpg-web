@@ -39,24 +39,27 @@ public class ResponseController
         return "response";
     }
 
-    /* Place Holder for Read
-        @RequestMapping(value = "/readform", method = RequestMethod.GET)
-    public String GetCharacter(@ModelAttribute("response") Response response, BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return "error"; 
-        }
-        dataHandler.ReadResponse(id)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String showFormRead(@PathVariable("id") String Id, ModelMap model) throws Exception {
+        Response response = (Response) dataHandler.Read(UUID.fromString(Id));
+        model.addAttribute("response",response);
         return "response";
     }
-	 */
 
-    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
-    public String change(@ModelAttribute("response") Response response, BindingResult result, ModelMap model) {
+    @RequestMapping(value ="/updateform/{id}", method = RequestMethod.GET)
+    public String showUpdateForm(@PathVariable("id") String Id, Model model) throws Exception {
+        Response response = (Response) dataHandler.Read(UUID.fromString(Id));
+        model.addAttribute("response", response);
+        return "create_response"; 
+    }
+    @RequestMapping(value="/updateform", method = RequestMethod.POST)
+    public String change(Response response, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
         dataHandler.Update(response);
-        return "response"; 
+        model.addAttribute("response",response);
+        return "response";   
     }
 
     @GetMapping("/deleteform")

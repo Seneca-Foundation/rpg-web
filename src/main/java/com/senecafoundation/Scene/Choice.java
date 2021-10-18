@@ -43,19 +43,31 @@ public class Choice
 
     public void setId(UUID randomUUID) 
     {
-        
+        this.id = randomUUID;
     }
 
     public int getChoiceOptionNumber() {
         return choiceOptionNumber;
     }
 
+    public void setChoiceOptionNumber(int choiceOptionNumber) {
+        this.choiceOptionNumber = choiceOptionNumber;
+    }
+
     public Response getResponse() {
         return response;
     }
 
+    public void setResponse(Response response) {
+        this.response = response;
+    }
+
     public String getChoiceText() {
         return choiceText;
+    }
+
+    public void setChoiceText(String choiceText) {
+        this.choiceText = choiceText;
     }
 
     
