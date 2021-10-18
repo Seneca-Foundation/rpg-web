@@ -41,6 +41,13 @@ public class NPCController
         return "Npc";
     }
 
+    @GetMapping("/readform")
+    public String showFormRead(Model model) {
+        NPC Npc = new NPC();
+        model.addAttribute("Npc", Npc);
+        return "read_Npc";
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String showFormRead(@PathVariable("id") String Id, ModelMap model) throws Exception {
         NPC npc = (NPC) dataHandler.Read(UUID.fromString(Id));
