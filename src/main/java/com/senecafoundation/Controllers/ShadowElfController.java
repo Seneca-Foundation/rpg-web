@@ -1,6 +1,7 @@
 package com.senecafoundation.Controllers;
 
 import java.util.UUID;
+import java.util.List;
 import com.senecafoundation.CharacterTypes.ICharacter;
 import com.senecafoundation.CharacterTypes.ShadowElf;
 import com.senecafoundation.DataHandler.ShadowElfDataHandler;
@@ -28,11 +29,6 @@ public class ShadowElfController {
         return "create_shadowelf";
     }
 
-    @RequestMapping(value = "/{id}")
-	 public ICharacter getCharacter(@PathVariable UUID id) throws Exception {
-	 	return dataHandler.Read(id);
-	 }
-
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
     public String submit(@ModelAttribute("shadowelf") ShadowElf shadowElf, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
@@ -41,5 +37,46 @@ public class ShadowElfController {
         dataHandler.Create(shadowElf);
         model.addAttribute("shadowelf", shadowElf);
         return "shadowelf";
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String showFormRead(@PathVariable("id") String Id, ModelMap model) throws Exception {
+        ShadowElf shadowelf = (ShadowElf) dataHandler.Read(UUID.fromString(Id));
+        model.addAttribute("shadowelf",shadowelf);
+        return "shadowelf";
+    }
+
+    @RequestMapping(value ="/updateform/{id}", method = RequestMethod.GET)
+    public String showUpdateForm(@PathVariable("id") String Id, Model model) throws Exception {
+        ShadowElf shadowelf = (ShadowElf) dataHandler.Read(UUID.fromString(Id));
+        model.addAttribute("shadowelf", shadowelf);
+        return "create_shadowelf"; 
+    }
+    @RequestMapping(value="/updateform", method = RequestMethod.POST)
+    public String change(ShadowElf shadowelf, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        dataHandler.Update(shadowelf);
+        model.addAttribute("shadowelf",shadowelf);
+        return "shadowelf";   
+    }
+
+    @GetMapping("/deleteform")
+    public String showFormDelete(Model model) {
+        List<ICharacter> shadowElfList = dataHandler.ReadAll();
+        model.addAttribute("shadowelf", shadowElfList);
+        return "delete_Shadowelf";
+    }
+
+    @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("id") String Id, ModelMap model) {
+        try {
+            dataHandler.Delete(UUID.fromString(Id));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("Id", Id);
+        return "itemdelete";
     }
 }

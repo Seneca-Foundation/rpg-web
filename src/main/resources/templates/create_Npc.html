@@ -5,39 +5,6 @@
     <link rel="stylesheet" th:href="@{/css/rpg.css}">
 </head>
     <body>
-        <!-- <h3>Welcome to the NPC Creation Screen</h3>
-        <form action="#" th:action="${Npc.id == null} ? @{/Npc/createform} : @{/Npc/updateform}" method="post" th:object="${Npc}">
-            <input type="hidden" th:field="*{id}" />
-            <table> 
-                <tr>
-                    <td><label>Name</label></td>
-                    <td><input type="text" th:field="*{name}" /></td>
-                </tr>
-                <tr>
-                    <td><label>Age</label></td>
-                    <td><input type="text" th:field="*{age}" /></td>
-                </tr>
-                <tr>
-                    <td><label>Gender</label></td>
-                    <td><input type="text" th:field="*{sex}" /></td>
-                </tr>
-                <tr>
-                    <td><label>Health</label></td>
-                    <td><input type="text" th:field="*{Health}" /></td>
-                </tr>
-                <tr>
-                    <td><label>Mana</label></td>
-                    <td><input type="text" th:field="*{Mana}" /></td>
-                </tr>
-                <tr>
-                    <td><label>Stamina</label></td>
-                    <td><input type="text" th:field="*{Stamina}" /></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Submit"/></td>
-                </tr>
-            </table>
-        </form:form> -->
         <form action="#" th:action="${Npc.id == null} ? @{/Npc/createform} : @{/Npc/updateform}" method="post" th:object="${Npc}">
         <input type="hidden" th:field="*{id}" />
         <div class="card">
@@ -91,6 +58,5 @@
             </form:form>
             </div>
           </div>
-          
     </body>
 </html>

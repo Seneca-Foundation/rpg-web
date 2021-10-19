@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "ac009496-2c84-4c5c-b95c-e7fe9275251c",
+		"name": "RPG-Web ShadowElfs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create ShadowElf",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Warren\",\n    \"age\":41,\n    \"sex\":\"Male\",\n    \"Health\":100,\n    \"Mana\":100,\n    \"Stamina\":100,\n   \"DestructionBonus\":100,\n    \"AlterationBonus\":100\n      \n}"
+				},
+				"url": {
+					"raw": "localhost/shadowelfs/",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shadowelfs",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update ShadowElf",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Warren\",\n    \"age\":41,\n    \"sex\":\"Male\",\n    \"Health\":100,\n    \"Mana\":100,\n    \"Stamina\":100,\n   \"DestructionBonus\":100,\n    \"AlterationBonus\":100\n      \n}"
+				},
+				"url": {
+					"raw": "localhost/shadowelfs/6e862688-302c-4962-a84b-3b0df49fd6b3",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shadowelfs",
+						"6e862688-302c-4962-a84b-3b0df49fd6b3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All ShadowElfs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/shadowelfs/",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shadowelfs",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get A Single ShadowElf",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/shadowelfs/86d506d2-003e-4f91-9ad2-e73ecd37e2d6",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shadowelfs",
+						"86d506d2-003e-4f91-9ad2-e73ecd37e2d6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete A Single ShadowElf",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/shadowelfs/7cd23762-bcdf-4444-a286-3957303ded8d",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shadowelfs",
+						"7cd23762-bcdf-4444-a286-3957303ded8d"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
