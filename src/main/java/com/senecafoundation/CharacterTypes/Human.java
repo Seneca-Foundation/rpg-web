@@ -29,9 +29,9 @@ public class Human extends Character
     }
 
     //Constructor
-    public Human(String name, int age, String sex, int restoration, int block, IDataHandler dataHandler)
+    public Human(String name, int age, String sex, int restoration, int block)
     {
-        super(name, age, sex, dataHandler, 50, 50, 70);
+        super(name, age, sex, 50, 50, 70);
         this.restorationBonus = restoration;
         this.blockBonus = block;
     }

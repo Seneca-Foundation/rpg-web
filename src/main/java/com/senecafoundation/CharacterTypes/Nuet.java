@@ -27,9 +27,9 @@ public class Nuet extends Character
     }
 
     //Constructor
-    public Nuet(String name, int age, String sex, int lockPicking, int lightArmor, IDataHandler dataHandler)
+    public Nuet(String name, int age, String sex, int lockPicking, int lightArmor)
     {
-        super(name, age, sex, dataHandler, 50, 50, 50);
+        super(name, age, sex, 50, 50, 50);
         this.lockPickingBonus = lockPicking;
         this.lightArmorBonus = lightArmor;
     }
