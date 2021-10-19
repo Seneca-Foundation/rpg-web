@@ -15,4 +15,10 @@ public class AppController
     return "index";
   }
 
+  @RequestMapping(method=RequestMethod.GET, value = "/topdownmap/")
+  public String topdownman()
+  {
+    return "topdownmap";
+  }
+  
 }
