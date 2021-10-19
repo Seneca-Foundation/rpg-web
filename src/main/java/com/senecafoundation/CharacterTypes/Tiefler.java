@@ -39,9 +39,9 @@ public class Tiefler extends Character
     }
 
     //Constructor
-    public Tiefler(String name, int age, String sex, int oneHanded, int archery, IDataHandler dataHandler)
+    public Tiefler(String name, int age, String sex, int oneHanded, int archery)
     {
-        super(name, age, sex, dataHandler, 50, 50, 50);
+        super(name, age, sex, 50, 50, 50);
         this.oneHandedBonus = oneHanded;
         this.archeryBonus = archery;
     }

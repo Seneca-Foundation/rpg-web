@@ -27,9 +27,9 @@ public class DemiHuman extends Character
     }
 
     //Constructor
-    public DemiHuman(String name, int age, String sex, int sneak, int alchemy, IDataHandler dataHandler)
+    public DemiHuman(String name, int age, String sex, int sneak, int alchemy)
     {
-        super(name, age, sex, dataHandler, 50, 25, 35);
+        super(name, age, sex, 50, 25, 35);
         this.sneakBonus = sneak;
         this.alchemyBonus = alchemy;
     }

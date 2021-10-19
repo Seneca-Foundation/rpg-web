@@ -1,6 +1,5 @@
 package com.senecafoundation.NPCTypes;
 import com.senecafoundation.CharacterTypes.Character;
-import com.senecafoundation.DataHandler.FileDataHandler;
 import java.util.Random;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -13,9 +12,9 @@ import javax.persistence.Table;
 public class NPC extends Character implements INPC
 {
     private String[] phrases;
-    public NPC(String name, int age, String sex, String[] phrases)
+    public NPC(String name, int age, String sex, int health, int mana, int stamina, String[] phrases)
     {
-        super(name, age, sex, new FileDataHandler("./" + name + ".CSV"), 50, 50, 50);
+        super(name, age, sex, health, mana, stamina);
         this.phrases = phrases;
     }
     public NPC() 

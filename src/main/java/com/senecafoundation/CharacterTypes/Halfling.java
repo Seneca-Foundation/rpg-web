@@ -28,9 +28,9 @@ public class Halfling extends Character
     }
 
     //Constructor
-    public Halfling(String name, int age, String sex, int archery, int pickpocket, IDataHandler dataHandler)
+    public Halfling(String name, int age, String sex, int archery, int pickpocket)
     {
-        super(name, age, sex, dataHandler, 30, 50, 60);
+        super(name, age, sex, 30, 50, 60);
         this.archeryBonus = archery;
         this.pickPocketBonus = pickpocket;
     }

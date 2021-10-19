@@ -26,9 +26,9 @@ public class Viking extends Character
     }
 
     //Constructor
-    public Viking(String name, int age, String sex, int twoHandedSwordB, int speechB, IDataHandler dataHandler)
+    public Viking(String name, int age, String sex, int twoHandedSwordB, int speechB)
     {
-        super(name, age, sex, dataHandler, 65, 20, 85);
+        super(name, age, sex, 65, 20, 85);
         this.twoHandedSwordBonus = twoHandedSwordB;
         this.speechBonus = speechB;
     }

@@ -28,9 +28,9 @@ public class Elf extends Character
     }
 
     //Constructor
-    public Elf(String name, int age, String sex, int illusion, int enchanting, IDataHandler dataHandler)
+    public Elf(String name, int age, String sex, int illusion, int enchanting)
     {
-        super(name, age, sex, dataHandler, 70, 30, 80);
+        super(name, age, sex, 70, 30, 80);
         this.illusionBonus = illusion;
         this.enchantingBonus = enchanting;
     }
