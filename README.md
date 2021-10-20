@@ -87,8 +87,8 @@
 
 10.  You may now build your image - passing in the profile to use as a build argument:
 
-            docker build --build-arg PROFILE=YOURNAME -t pokemonwebgame .
+            docker build --build-arg PROFILE=YOURNAME -t rpgweb .
 
 11.  Finally, run the container using the following command:
 
-            docker run --name pokemonwebgame -p 80:80 -d pokemonwebgame
+            docker run --name rpgweb -p 80:80 -d rpgweb

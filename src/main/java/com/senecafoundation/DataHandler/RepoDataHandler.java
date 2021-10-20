@@ -1,5 +1,6 @@
 package com.senecafoundation.DataHandler;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import com.senecafoundation.CharacterTypes.Character;
@@ -41,6 +42,10 @@ public class RepoDataHandler<T extends Character> extends CharacterDataHandler {
 
     @Override
     public List<ICharacter> ReadAll() {
-        return (List<ICharacter>) this.characterRepository.findAll();
+        List<ICharacter> charactersToReturn = new ArrayList<ICharacter>();
+        for (ICharacter iCharacter : this.characterRepository.findAll()) {
+            charactersToReturn.add(iCharacter);
+        }
+        return charactersToReturn;
     }
 }
