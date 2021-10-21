@@ -20,5 +20,11 @@ public class AppController
   {
     return "topdownmap";
   }
+
+  @RequestMapping(method=RequestMethod.GET, value = "/indexTwo")
+  public String indie()
+  {
+    return "indexTwo";
+  }
   
 }
