@@ -11,7 +11,7 @@ class Overworld //top level parent component
     {
         const image = new Image(); //create new image, assign a source to that image, copy over pixels to the canvas, ctx (context) allows for drawing on canvas
         image.onload = () => {
-            this.ctx.drawImage(image)//wants a few arguments, simple: pass in the image we want to draw pixels from and then an x,ycoordinate where we wil draw image from
+            this.ctx.drawImage(image, 0, 0)//wants a few arguments, simple: pass in the image we want to draw pixels from and then an x,ycoordinate where we wil draw image from
         };
         image.src = "images/DemoLower.png";
 
