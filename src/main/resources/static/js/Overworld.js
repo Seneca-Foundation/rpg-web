@@ -54,7 +54,7 @@ class Overworld //top level parent component
                 32      
         )
         }
-        hero.src = "images/Alchemist_idle.png"
+        hero.src = "images/shadowelf.png"
 
 
     }
