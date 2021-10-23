@@ -26,7 +26,7 @@ class OverworldMap {
                     isPlayerControlled: true,
                     x: utils.withGrid(5),
                     y: utils.withGrid(6),
-                    src: "images/shadowelf.png"
+                     src: "images/shadowelf.png"
                 }),
                 npc1: new Person({
                     x: utils.withGrid(7),
