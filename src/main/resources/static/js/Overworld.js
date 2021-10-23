@@ -19,7 +19,9 @@ class Overworld //top level parent component
 
             //Draw Game Objects  *Note* game obejct stored as an object of game objects;  Object.values ---> take values of key value store and iterate through them
             Object.values(this.map.gameObjects).forEach(object => {
-                object.x += 0.02;
+                object.update({
+                    arrow: this.directionInput.direction
+                })
                 object.sprite.draw(this.ctx);
             })
 
@@ -36,13 +38,12 @@ class Overworld //top level parent component
 
     init() 
     {
-        this.map = new OverworldMap(window.OverworldMaps.Kitchen);
+        this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
+
+        this.directionInput = new DirectionInput();
+        this.directionInput.init();               //get key bindings on document
+        this.directionInput.direction; //"down","up",etc
+
         this.startGameLoop();
-
-        
-        
-
-
     }
-
 }

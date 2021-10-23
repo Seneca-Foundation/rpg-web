@@ -32,8 +32,8 @@ class Sprite {
     }
     //takes in context to where to draw to
     draw(ctx) {
-        const x = this.gameObject.x * 16 - 8; // x and y nudges position of game object on screen
-        const y = this.gameObject.y * 16 - 18;
+        const x = this.gameObject.x  - 8; // x and y nudges position of game object on screen
+        const y = this.gameObject.y  - 18;
 
         this.isShadowLoaded && ctx.drawImage(this.shadow, x, y) // shadow.png is a 32x32 square instead of a sprite sheet
 
