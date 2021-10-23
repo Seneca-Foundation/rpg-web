@@ -9,12 +9,20 @@ class OverworldMap {
         this.upperImage.src = config.upperSrc; // upper layers- rooftops and etc
     }
 
-    drawLowerImage(ctx) {
-        ctx.drawImage(this.lowerImage, 0, 0) // draws lower images
+    drawLowerImage(ctx, cameraPerson) { //draws lower images
+        ctx.drawImage(
+            this.lowerImage, 
+            utils.withGrid(10.5) - cameraPerson.x, 
+            utils.withGrid(6) - cameraPerson.y
+            ) 
     }
 
-    drawUpperImage(ctx) {
-        ctx.drawImage(this.upperImage, 0, 0) // draws upper images
+    drawUpperImage(ctx, cameraPerson) { // draws upper images
+        ctx.drawImage(
+            this.upperImage, 
+            utils.withGrid(10.5) - cameraPerson.x, 
+            utils.withGrid(6) - cameraPerson.y
+            ) 
     }
 }
     window.OverworldMaps = {
