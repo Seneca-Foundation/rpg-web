@@ -1,4 +1,8 @@
 class Person extends GameObject {
+    
+    // Audio Sounds
+    pokemonWallBump = new Audio("music/pokemon-wall-bump.mp3");
+
     constructor(config) {
         super(config)
         this.movingProgressRemaining = 0; //moves by cell blocks, this far away and keep moving until it reaches the point
@@ -41,6 +45,7 @@ class Person extends GameObject {
 
             //Stop here if space is not free
             if (state.map.isSpaceTaken(this.x, this.y, this.direction)) {
+                this.pokemonWallBump.play();
                 return;
             }
 

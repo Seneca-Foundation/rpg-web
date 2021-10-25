@@ -54,14 +54,14 @@ class OverworldMap {
 }
     window.OverworldMaps = {
         DemoRoom: {
-            lowerSrc: "images/DemoLower.png",
-            upperSrc: "images/DemoUpper.png",
+            lowerSrc: "images/places/Tavern.png",
+            upperSrc: "images/places/TavernUpper.png",
             gameObjects: {
                 hero: new Person({
                     isPlayerControlled: true,
                     x: utils.withGrid(5),
                     y: utils.withGrid(6),
-                     src: "images/shadowelf.png"
+                     src: "images/characters/shadowelf.png"
                 }),
                 npc1: new Person({
                     x: utils.withGrid(7),
@@ -77,8 +77,8 @@ class OverworldMap {
             }
         },
         Kitchen: {
-            lowerSrc: "images/KitchenLower.png",
-            upperSrc: "images/KitchenUpper.png",
+            lowerSrc: "images/places/KitchenLower.png",
+            upperSrc: "images/places/KitchenUpper.png",
             gameObjects: {
                 hero: new GameObject({
                     x: 3,
@@ -87,12 +87,12 @@ class OverworldMap {
                 npcA: new GameObject({
                     x: 9,
                     y: 6,
-                    src: "images/test.png"
+                    src: "images/characters/mercenaryBeastman.png"
                 }),
                 npcB: new GameObject({
                     x: 10,
                     y: 8,
-                    src: "images/shadowelf.png"
+                    src: "images/characters/shadowelf.png"
                 })
             }
         },
