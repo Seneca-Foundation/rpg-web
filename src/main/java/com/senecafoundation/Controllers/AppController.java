@@ -26,5 +26,11 @@ public class AppController
   {
     return "indexTwo";
   }
+
+  @RequestMapping(method=RequestMethod.GET, value = "/startscreen")
+  public String start()
+  {
+    return "startScreen";
+  }
   
 }
