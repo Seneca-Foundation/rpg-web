@@ -20,14 +20,14 @@ class Sprite {
 
         //Configuration of Animation and Initial State of Sprite
         this.animations = config.animations || {
-           "idle-down" : [ [0,0] ],
-           "idle-right": [ [0,1] ],
-           "idle-up"   : [ [0,2] ],
-           "idle-left" : [ [0,3] ],
-           "walk-down" : [ [1,0], [0,0], [3,0], [0,0], ],
-           "walk-right": [ [1,1], [0,1], [3,1], [0,1], ],
-           "walk-up"   : [ [1,2], [0,2], [3,2], [0,2], ],
-           "walk-left" : [ [1,3], [0,3], [3,3], [0,3], ]
+           "idle-down" : [ [1,0] ],
+           "idle-right": [ [1,2] ],
+           "idle-up"   : [ [1,3] ],
+           "idle-left" : [ [1,1] ],
+           "walk-down" : [ [0,0], [1,0], [2,0],  ],
+           "walk-right": [ [0,2], [1,2], [2,2],  ],
+           "walk-up"   : [ [0,3], [1,3], [2,3],  ],
+           "walk-left" : [ [0,1], [1,1], [1,1],  ]
         }
         // captures actual animation and frame of animation
         this.currentAnimation = "idle-right";//config.currentAnimation || "idle-down"; 

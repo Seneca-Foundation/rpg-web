@@ -64,16 +64,139 @@ class OverworldMap {
                      src: "images/characters/shadowelf.png"
                 }),
                 npc1: new Person({
+                    x: utils.withGrid(2),
+                    y: utils.withGrid(7),
+                    src: "images/characters/panda.png"
+                }),
+                npc2: new Person({
+                    x: utils.withGrid(4),
+                    y: utils.withGrid(7),
+                    src: "images/characters/panda.png"
+                }),
+                npc3: new Person({
+                    x: utils.withGrid(9),
+                    y: utils.withGrid(10),
+                    src: "images/characters/shadowLord.png"
+                }),
+                npc4: new Person({
                     x: utils.withGrid(7),
-                    y: utils.withGrid(9),
+                    y: utils.withGrid(10),
+                    src: "images/characters/shadowLordHenchmen.png"
+                }),
+                npc5: new Person({
+                    x: utils.withGrid(3),
+                    y: utils.withGrid(4),
+                    src: "images/characters/bartenderBeastman.png"
+                }),
+                npc6: new Person({
+                    x: utils.withGrid(7),
+                    y: utils.withGrid(4),
+                    src: "images/characters/mercenaryBeastman.png"
+                }),
+                npc7: new Person({
+                    x: utils.withGrid(12),
+                    y: utils.withGrid(6),
+                    src: "images/characters/femaleBartenderBeastman.png"
+                }),
+                npc8: new Person({
+                    x: utils.withGrid(7),
+                    y: utils.withGrid(7),
+                    src: "images/characters/royaltyBeastman.png"
+                }),
+                npc9: new Person({
+                    x: utils.withGrid(9),
+                    y: utils.withGrid(7),
+                    src: "images/characters/angel.png"
+                }),
+                npc10: new Person({
+                    x: utils.withGrid(2),
+                    y: utils.withGrid(10),
+                    src: "images/characters/doctorBeastmen.png"
+                }),
+                musicPlayer: new Person({
+                    x: utils.withGrid(12),
+                    y: utils.withGrid(11),
+                    src: "images/characters/musicBeastman.png"
                 })
             },
             walls: {
                 // "16,16" : true
-                [utils.asGridCoord(7,6)] : true, // gives coords of walls
-                [utils.asGridCoord(8,6)] : true,
-                [utils.asGridCoord(7,7)] : true, // these numbers are for the table
-                [utils.asGridCoord(8,7)] : true,
+                [utils.asGridCoord(0,0)] : true, // outer perimeter top
+                [utils.asGridCoord(1,0)] : true,
+                [utils.asGridCoord(2,0)] : true,
+                [utils.asGridCoord(3,0)] : true,
+                [utils.asGridCoord(4,0)] : true,
+                [utils.asGridCoord(5,0)] : true, 
+                [utils.asGridCoord(6,0)] : true,
+                [utils.asGridCoord(7,0)] : true,
+                [utils.asGridCoord(8,0)] : true,
+                [utils.asGridCoord(9,0)] : true,
+                [utils.asGridCoord(10,0)] : true, 
+                [utils.asGridCoord(11,0)] : true,
+                [utils.asGridCoord(12,0)] : true,
+
+                [utils.asGridCoord(13,1)] : true, // outer right perimeter
+                [utils.asGridCoord(13,2)] : true,
+                [utils.asGridCoord(13,3)] : true,
+                [utils.asGridCoord(13,4)] : true, 
+                [utils.asGridCoord(13,5)] : true,
+                [utils.asGridCoord(13,6)] : true,
+                [utils.asGridCoord(13,7)] : true,
+                [utils.asGridCoord(13,8)] : true,
+                [utils.asGridCoord(13,9)] : true, 
+                [utils.asGridCoord(13,10)] : true,
+                [utils.asGridCoord(13,11)] : true,
+
+                [utils.asGridCoord(0,12)] : true, // outer bottom perimeter
+                [utils.asGridCoord(1,12)] : true,
+                [utils.asGridCoord(2,12)] : true,
+                [utils.asGridCoord(3,12)] : true,
+                [utils.asGridCoord(4,12)] : true,
+                [utils.asGridCoord(5,12)] : true, 
+                [utils.asGridCoord(6,13)] : true,
+                [utils.asGridCoord(7,12)] : true,
+                [utils.asGridCoord(8,12)] : true,
+                [utils.asGridCoord(9,12)] : true,
+                [utils.asGridCoord(10,12)] : true, 
+                [utils.asGridCoord(11,12)] : true,
+                [utils.asGridCoord(12,12)] : true,
+
+                [utils.asGridCoord(0,1)] : true, // outer right perimeter
+                [utils.asGridCoord(0,2)] : true,
+                [utils.asGridCoord(0,3)] : true,
+                [utils.asGridCoord(0,4)] : true, 
+                [utils.asGridCoord(0,5)] : true,
+                [utils.asGridCoord(0,6)] : true,
+                [utils.asGridCoord(0,7)] : true,
+                [utils.asGridCoord(0,8)] : true,
+                [utils.asGridCoord(0,9)] : true, 
+                [utils.asGridCoord(0,10)] : true,
+                [utils.asGridCoord(0,11)] : true,
+
+                [utils.asGridCoord(3,7)] : true, // top left table
+                [utils.asGridCoord(8,7)] : true, // top right table
+                [utils.asGridCoord(3,10)] : true, // bottom left table
+                [utils.asGridCoord(8,10)] : true, // bottom right table
+                [utils.asGridCoord(11,5)] : true, // far right table
+
+                [utils.asGridCoord(11,7)] : true, // front desk table
+                [utils.asGridCoord(12,7)] : true, 
+
+                [utils.asGridCoord(0,5)] : true, // bartender table
+                [utils.asGridCoord(1,5)] : true,
+                [utils.asGridCoord(2,5)] : true,
+                [utils.asGridCoord(3,5)] : true,
+                [utils.asGridCoord(4,5)] : true,
+
+                [utils.asGridCoord(4,3)] : true, //block loop hole walls
+                [utils.asGridCoord(5,3)] : true,
+                [utils.asGridCoord(8,3)] : true,
+                [utils.asGridCoord(9,4)] : true,
+                [utils.asGridCoord(10,4)] : true,
+
+                [utils.asGridCoord(6,4)] : true, //right bartender wall
+                [utils.asGridCoord(6,5)] : true,
+                
             }
         },
         Kitchen: {
