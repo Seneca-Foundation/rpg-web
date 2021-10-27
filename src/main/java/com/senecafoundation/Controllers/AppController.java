@@ -32,5 +32,11 @@ public class AppController
   {
     return "startScreen";
   }
+
+  @RequestMapping(method=RequestMethod.GET, value = "/inventory")
+  public String inventory()
+  {
+    return "inventory";
+  }
   
 }
