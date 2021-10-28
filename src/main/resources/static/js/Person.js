@@ -2,7 +2,7 @@ class Person extends GameObject {
     
     // Audio Sounds
     pokemonWallBump = new Audio("music/pokemon-wall-bump.mp3");
-    rpgMusicBump = new Audio("music/rpgMusicLoop.mp3");
+    // rpgMusicBump = new Audio("music/rpgMusicLoop.mp3");
 
     constructor(config) {
         super(config)
@@ -47,7 +47,6 @@ class Person extends GameObject {
             //Stop here if space is not free
             if (state.map.isSpaceTaken(this.x, this.y, this.direction)) {
                 this.pokemonWallBump.play();
-                this.rpgMusicBump.play();
                 return;
             }
 
