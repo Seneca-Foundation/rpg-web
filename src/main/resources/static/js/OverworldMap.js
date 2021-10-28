@@ -8,6 +8,8 @@ class OverworldMap {
 
         this.upperImage = new Image();
         this.upperImage.src = config.upperSrc; // upper layers- rooftops and etc
+
+        this.isCutscenePlaying = true;
     }
 
     drawLowerImage(ctx, cameraPerson) { //draws lower images
@@ -32,11 +34,28 @@ class OverworldMap {
     }
 
     mountObjects() {
-        Object.values(this.gameObjects).forEach(o =>{
+        Object.keys(this.gameObjects).forEach(key =>{ //iterates through all the keys of each object to pipe in as the id
+
+            let object = this.gameObjects[key];
+            object.id = key; // "hero, NpcA, etc"
 
             //TODO: determine if this object should actually mount
-            o.mount(this);
+            object.mount(this);
         })
+    }
+
+    async startCutscene(events) {
+        this.isCutscenePlaying = true;
+
+        for (let i=0; i<events.length; i++) {
+            const eventHandler = new OverworldEvent({
+                event: events[i],
+                map: this,
+            })
+            await eventHandler.init();
+        }
+
+        this.isCutscenePlaying = false;
     }
 
     //Adds wall to player object, then removes it when it moves and adds another and so on
@@ -66,12 +85,25 @@ class OverworldMap {
                 npc1: new Person({
                     x: utils.withGrid(2),
                     y: utils.withGrid(7),
-                    src: "images/characters/panda.png"
+                    src: "images/characters/panda.png",
+                    behaviorLoop: [
+                        {type: "stand", direction: "left", time: 800},
+                        {type: "stand", direction: "up", time: 800},
+                        {type: "stand", direction: "right", time: 1200},
+                        {type: "stand", direction: "up", time: 300},
+                    ]
                 }),
                 npc2: new Person({
                     x: utils.withGrid(4),
                     y: utils.withGrid(7),
-                    src: "images/characters/panda.png"
+                    src: "images/characters/panda.png",
+                    behaviorLoop: [
+                        {type: "walk", direction: "left"},
+                        {type: "stand", direction: "up", time: 800},
+                        {type: "walk", direction: "up"},
+                        {type: "walk", direction: "right"},
+                        {type: "walk", direction: "down"},
+                    ]
                 }),
                 npc3: new Person({
                     x: utils.withGrid(9),
@@ -173,7 +205,7 @@ class OverworldMap {
                 [utils.asGridCoord(0,10)] : true,
                 [utils.asGridCoord(0,11)] : true,
 
-                [utils.asGridCoord(3,7)] : true, // top left table
+                //[utils.asGridCoord(3,7)] : true, // top left table
                 [utils.asGridCoord(8,7)] : true, // top right table
                 [utils.asGridCoord(3,10)] : true, // bottom left table
                 [utils.asGridCoord(8,10)] : true, // bottom right table

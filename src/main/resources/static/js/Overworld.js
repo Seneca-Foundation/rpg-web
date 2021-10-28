@@ -29,7 +29,9 @@ class Overworld //top level parent component
             this.map.drawLowerImage(this.ctx, cameraPerson);
 
             //Draw Game Objects  *Note* game obejct stored as an object of game objects;  Object.values ---> take values of key value store and iterate through them
-            Object.values(this.map.gameObjects).forEach(object => {
+            Object.values(this.map.gameObjects).sort((a,b) => {
+                return a.y - b.y; // the lower y values will be upfront of the array the greater y value will be at the end of the array. Northern characters will drawn before the southern characters
+            }).forEach(object => {
                 object.sprite.draw(this.ctx, cameraPerson);
             })
 
@@ -54,5 +56,16 @@ class Overworld //top level parent component
         //this.directionInput.direction; //"down","up",etc
 
         this.startGameLoop();
+
+
+        //change to fit cutscene of scenario
+        this.map.startCutscene([
+            {who: "hero", type: "walk", direction: "down" },
+            {who: "hero", type: "walk", direction: "down" },
+            {who: "hero", type: "walk", direction: "down" },
+            {who: "hero", type: "walk", direction: "down" },
+            {who: "npc6", type: "walk", direction: "down" },
+            {who: "npc6", type: "stand", direction: "up", time: 800 },
+        ])
     }
 }

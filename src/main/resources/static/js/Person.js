@@ -29,7 +29,7 @@ class Person extends GameObject {
             //
 
             //Case: We're keyboard ready and have an arrow pressed 
-            if (this.isPlayerControlled && state.arrow) { //detecting when an arrow is coming in and validating character's movement
+            if (!state.map.isCutscenePlaying && this.isPlayerControlled && state.arrow) { //detecting when an arrow is coming in and validating character's movement
                 this.startBehavior(state, {
                     type: "walk",
                     direction: state.arrow
@@ -47,13 +47,29 @@ class Person extends GameObject {
             //Stop here if space is not free
             if (state.map.isSpaceTaken(this.x, this.y, this.direction)) {
                 this.pokemonWallBump.play();
+
+
+                behavior.retry && setTimeout(() => {
+                    this.startBehavior(state, behavior)
+                }, 10)
+
                 return;
             }
 
             //Ready to Walk
             state.map.moveWall(this.x, this.y, this.direction);
             this.movingProgressRemaining = 16;
+            this.updateSprite(state);
         }
+
+        if (behavior.type === "stand") {
+            setTimeout(() => {
+                utils.emitEvent("PersonStandComplete", {
+                    whoId: this.id
+                })
+            }, behavior.time)
+        }
+
     }
 
     updatePosition() {
@@ -61,6 +77,15 @@ class Person extends GameObject {
             const [property, change] = this.directionUpdate[this.direction] // array to grab values, value we one to change of directionUpdate property either x or y | change 1 or -1
             this[property] += change;
             this.movingProgressRemaining -= 1;
+
+            if (this.movingProgressRemaining === 0) {
+                // We finished the walk
+                utils.emitEvent("PersonWalkingComplete", {
+                    whoId: this.id
+                })
+
+
+            }
     }
 
     updateSprite() {
