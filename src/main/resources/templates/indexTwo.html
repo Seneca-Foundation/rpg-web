@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Cealasia</title>
-        <link href="/css/styles.css" type="text/css" rel="stylesheet">
-        <link rel="stylesheet" th:href="@{/css/pause_play.css}">
-    </head>
-    <body>
-        <form action="#" th:action="@{/inventory}">
-        
-            <audio id="track">
-                <source src="music/rpgMusicLoop.mp3" type="audio/mp3" />
-              </audio>
-              
-              <div id="player-container">
-                <div id="play-pause" class="play">Play</div>
-              </div>
 
-        <div class="game-container">
-            <canvas class="game-canvas" width="352" height="198"></canvas>
-            <button  href="/startScreen" >Stats</button>
-            <button  href="/inventory" >Inventory</button>
-        </div>
+<head>
+	<title>Cealasia</title>
+	<link href="/css/styles.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/pause_play.css}">
+</head>
 
-        <!-- Scripts -->
-        <script src="/js/PausePlay.js"></script>
-        <script src="/js/utils.js"></script>
-        <script src="/js/DirectionInput.js"></script>
-        <script src="/js/Overworld.js"></script>
-        <script src="/js/GameObject.js"></script>
-        <script src="/js/Person.js"></script>
-        <script src="/js/Sprite.js"></script>
-        <script src="/js/OverworldMap.js"></script>
-        <script src="/js/OverworldEvent.js"></script>
-        <script src="/js/init.js"></script>  <!-- Kicks off game file -->
-        
-    </body>
+<body>
+
+		<audio id="track">
+			<source src="music/rpgMusicLoop.mp3" type="audio/mp3" />
+		</audio>
+
+		<div id="player-container">
+			<div id="play-pause" class="play">Play</div>
+		</div>
+
+		<div class="game-container">
+			<canvas class="game-canvas" width="352" height="198"></canvas>
+			<a href="/Npc/createform">
+				<button>Stats</button>
+			</a>
+			<a href="/inventory">
+				<button>Inventory</button>
+			</a>
+		</div>
+
+		<!-- Scripts -->
+		<script src="/js/PausePlay.js"></script>
+		<script src="/js/utils.js"></script>
+		<script src="/js/DirectionInput.js"></script>
+		<script src="/js/Overworld.js"></script>
+		<script src="/js/GameObject.js"></script>
+		<script src="/js/Person.js"></script>
+		<script src="/js/Sprite.js"></script>
+		<script src="/js/OverworldMap.js"></script>
+		<script src="/js/OverworldEvent.js"></script>
+		<script src="/js/init.js"></script> <!-- Kicks off game file -->
+
+</body>
+
 </html>
