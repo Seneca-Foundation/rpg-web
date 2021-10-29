@@ -78,8 +78,8 @@ class OverworldMap {
             gameObjects: {
                 hero: new Person({
                     isPlayerControlled: true,
-                    x: utils.withGrid(5),
-                    y: utils.withGrid(6),
+                    x: utils.withGrid(6),
+                    y: utils.withGrid(12),
                      src: "images/characters/shadowelf.png"
                 }),
                 npc1: new Person({
@@ -123,6 +123,11 @@ class OverworldMap {
                 npc6: new Person({
                     x: utils.withGrid(7),
                     y: utils.withGrid(4),
+                    src: "images/characters/mercenaryBeastman.png"
+                }),
+                npc6B: new Person({
+                    x: utils.withGrid(6),
+                    y: utils.withGrid(13),
                     src: "images/characters/mercenaryBeastman.png"
                 }),
                 npc7: new Person({
@@ -185,7 +190,7 @@ class OverworldMap {
                 [utils.asGridCoord(3,12)] : true,
                 [utils.asGridCoord(4,12)] : true,
                 [utils.asGridCoord(5,12)] : true, 
-                [utils.asGridCoord(6,13)] : true,
+                // [utils.asGridCoord(6,13)] : true,
                 [utils.asGridCoord(7,12)] : true,
                 [utils.asGridCoord(8,12)] : true,
                 [utils.asGridCoord(9,12)] : true,
