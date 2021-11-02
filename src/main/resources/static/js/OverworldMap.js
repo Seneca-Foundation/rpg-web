@@ -9,7 +9,7 @@ class OverworldMap {
         this.upperImage = new Image();
         this.upperImage.src = config.upperSrc; // upper layers- rooftops and etc
 
-        this.isCutscenePlaying = true;
+        this.isCutscenePlaying = false;
     }
 
     drawLowerImage(ctx, cameraPerson) { //draws lower images
@@ -56,6 +56,9 @@ class OverworldMap {
         }
 
         this.isCutscenePlaying = false;
+
+        //Reset Npcs to do their idle behavior
+        Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this) )
     }
 
     //Adds wall to player object, then removes it when it moves and adds another and so on

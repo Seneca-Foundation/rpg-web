@@ -7,6 +7,7 @@ class Person extends GameObject {
     constructor(config) {
         super(config)
         this.movingProgressRemaining = 0; //moves by cell blocks, this far away and keep moving until it reaches the point
+        this.isStanding = false;
 
         this.isPlayerControlled = config.isPlayerControlled || false;
 
@@ -63,10 +64,12 @@ class Person extends GameObject {
         }
 
         if (behavior.type === "stand") {
+            this.isStanding = true;
             setTimeout(() => {
                 utils.emitEvent("PersonStandComplete", {
                     whoId: this.id
                 })
+                this.isStanding = false;
             }, behavior.time)
         }
 
