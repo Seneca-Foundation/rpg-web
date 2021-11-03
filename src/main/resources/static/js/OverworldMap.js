@@ -119,7 +119,7 @@ class OverworldMap {
                     talking: [
                         {
                             events: [
-                                {type: "textMessage", text: "We got the runs!", faceHero: "npc1" },
+                                {type: "textMessage", text: "Where's the bathroom?!", faceHero: "npc1" },
                                 {type: "textMessage", text: "Man oh man!"},
                                 {who: "hero", type: "walk", direction: "down"},
                             ]
@@ -131,32 +131,80 @@ class OverworldMap {
                     y: utils.withGrid(7),
                     src: "images/characters/panda.png",
                     behaviorLoop: [
-                        {type: "walk", direction: "left"},
-                        {type: "stand", direction: "up", time: 800},
-                        {type: "walk", direction: "up"},
-                        {type: "walk", direction: "right"},
-                        {type: "walk", direction: "down"},
+                        {type: "stand", direction: "left", time: 1500},
+                    ],
+                    talking: [
+                        {
+                            events: [
+                                {type: "textMessage", text: "Damn, bro got the runs!", faceHero: "npc2" },
+                                {type: "textMessage", text: "Sheeeesh!"},
+                                {who: "hero", type: "walk", direction: "down"},
+                            ]
+                        }
                     ]
                 }),
                 npc3: new Person({
                     x: utils.withGrid(9),
                     y: utils.withGrid(10),
-                    src: "images/characters/shadowLord.png"
+                    src: "images/characters/shadowLord.png",
+                    behaviorLoop: [
+                        {type: "stand", direction: "left"},
+                    ],
+                    talking: [
+                        {
+                            events: [
+                                {type: "textMessage", text: "Hmph.", faceHero: "npc3" },
+                                {type: "textMessage", text: "Go away."},
+                            ]
+                        }
+                    ]
                 }),
                 npc4: new Person({
                     x: utils.withGrid(7),
                     y: utils.withGrid(10),
-                    src: "images/characters/shadowLordHenchmen.png"
+                    src: "images/characters/shadowLordHenchmen.png",
+                    behaviorLoop: [
+                        {type: "stand", direction: "right"},
+                    ],
+                    talking: [
+                        {
+                            events: [
+                                {type: "textMessage", text: "Leave.", faceHero: "npc4" },
+                            ]
+                        }
+                    ]
                 }),
                 npc5: new Person({
                     x: utils.withGrid(3),
                     y: utils.withGrid(4),
-                    src: "images/characters/bartenderBeastman.png"
+                    src: "images/characters/bartenderBeastman.png",
+                    behaviorLoop: [
+                        {type: "stand", direction: "down", time:1500},
+                        {type: "stand", direction: "up", time:1500},
+                    ],
+                    talking: [
+                        {
+                            events: [
+                                {type: "textMessage", text: "Man, these are a lot of glasses I need to put away. ", faceHero: "npc5" },
+                                {type: "textMessage", text: "Sorry bucko, can't talk right now."},
+                            ]
+                        }
+                    ]
                 }),
                 npc6: new Person({
                     x: utils.withGrid(8),
                     y: utils.withGrid(4),
-                    src: "images/characters/mercenaryBeastman.png"
+                    src: "images/characters/mercenaryBeastman.png",
+                    behaviorLoop: [
+                        {type: "stand", direction: "down"},
+                    ],
+                    talking: [
+                        {
+                            events: [
+                                {type: "textMessage", text: "I could really use a drink right now. ", faceHero: "npc6" },
+                            ]
+                        }
+                    ]
                 }),
                 // npc6B: new Person({
                 //     x: utils.withGrid(6),
@@ -166,27 +214,96 @@ class OverworldMap {
                 npc7: new Person({
                     x: utils.withGrid(12),
                     y: utils.withGrid(6),
-                    src: "images/characters/femaleBartenderBeastman.png"
+                    src: "images/characters/femaleBartenderBeastman.png",
+                    behaviorLoop: [
+                        {type: "stand", direction: "down"},
+                    ],
+                    talking: [
+                        {
+                            events: [
+                                {type: "textMessage", text: "Meow. ", faceHero: "npc7" },
+                                {type: "textMessage", text: "Sorry. There's no tables available for you at this time."},
+                                {type: "textMessage", text: "Meow."},
+                            ]
+                        }
+                    ]
                 }),
                 npc8: new Person({
                     x: utils.withGrid(7),
                     y: utils.withGrid(7),
-                    src: "images/characters/royaltyBeastman.png"
+                    src: "images/characters/royaltyBeastman.png",
+                    behaviorLoop: [
+                        {type: "stand", direction: "down"},
+                    ],
+                    talking: [
+                        {
+                            events: [
+                                {type: "textMessage", text: "I wonder what those two are plotting. ", faceHero: "npc8" },
+                                {type: "textMessage", text: "Probably nothing good."},
+                                {type: "textMessage", text: "Do you mind bothering someone else?"},
+                                {who: "hero", type: "walk", direction: "left"},
+                            ]
+                        }
+                    ]  
                 }),
                 npc9: new Person({
                     x: utils.withGrid(9),
                     y: utils.withGrid(7),
-                    src: "images/characters/angel.png"
+                    src: "images/characters/angel.png",
+                    behaviorLoop: [
+                        {type: "stand", direction: "left"},
+                    ],
+                    talking: [
+                        {
+                            events: [
+                                {type: "textMessage", text: "I wonder why she left me... ", faceHero: "npc9" },
+                                {type: "textMessage", text: "Oops, I mean uhhh..."},
+                                {type: "textMessage", text: "Man, I have a bad habit of thinking out load."},
+                            ]
+                        }
+                    ] 
                 }),
                 npc10: new Person({
                     x: utils.withGrid(2),
                     y: utils.withGrid(10),
-                    src: "images/characters/doctorBeastmen.png"
+                    src: "images/characters/doctorBeastmen.png",
+                    behaviorLoop: [
+                        {type: "stand", direction: "right"},
+                    ],
+                    talking: [
+                        {
+                            events: [
+                                {type: "textMessage", text: "'Sad Gasp'.", faceHero: "npc10" },
+                                {type: "textMessage", text: "Why am I always alone..."},
+                            ]
+                        }
+                    ]
                 }),
                 musicPlayer: new Person({
                     x: utils.withGrid(12),
                     y: utils.withGrid(11),
-                    src: "images/characters/musicBeastman.png"
+                    src: "images/characters/musicBeastman.png",
+                    behaviorLoop: [
+                        {type: "walk", direction: "up", time: 800},
+                        {type: "walk", direction: "up", time: 800},
+                        {type: "walk", direction: "up", time: 800},
+                        {type: "stand", direction: "up", time: 1200},
+                        {type: "walk", direction: "down", time: 800},
+                        {type: "walk", direction: "down", time: 800},
+                        {type: "walk", direction: "down", time: 800},
+                        {type: "stand", direction: "down", time: 1200},
+                    ],
+                    talking: [
+                        {
+                            events: [
+                                {type: "textMessage", text: "Meow!", faceHero: "npc1" },
+                                {type: "textMessage", text: "MEOW!"},
+                                {type: "textMessage", text: "'COUGH'. 'COUGH'"},
+                                {type: "textMessage", text: "Sussy baka."},
+                                {who: "hero", type: "walk", direction: "left"},
+                            ]
+                        }
+                    ]
                 })
             },
             walls: {
@@ -244,6 +361,7 @@ class OverworldMap {
                 [utils.asGridCoord(0,11)] : true,
 
                 //[utils.asGridCoord(3,7)] : true, // top left table
+                [utils.asGridCoord(3,7)] : true, // top left table
                 [utils.asGridCoord(8,7)] : true, // top right table
                 [utils.asGridCoord(3,10)] : true, // bottom left table
                 [utils.asGridCoord(8,10)] : true, // bottom right table
@@ -286,14 +404,38 @@ class OverworldMap {
                 [utils.asGridCoord(6,13)]: [
                     {
                         events: [
-                            {type: "changeMap", map: "Kitchen"}
+                            {type: "changeMap", map: "Backroom"}
                         ]
                     }
                 ]
             }
         },
-        Kitchen: {
-            lowerSrc: "images/places/KitchenLower.png",
+        Backroom: {
+            lowerSrc: "images/places/DemoLower.png",
+            upperSrc: "images/places/DemoUpper.png",
+            gameObjects: {
+                hero: new Person({
+                    isPlayerControlled: true,
+                    x: utils.withGrid(5),
+                    y: utils.withGrid(5),
+                    src: "images/characters/shadowelf.png",
+                }),
+                npcA: new Person({
+                    x: utils.withGrid(10),
+                    y: utils.withGrid(8),
+                    src: "images/characters/shadowelf.png",
+                    talking: [
+                        {
+                            events: [
+                                {type: "textMessage", text: "You Made It!", faceHero: "npcA" },
+                            ]
+                        }
+                    ]
+                })
+            }
+        },
+        Trial: {
+            lowerSrc: "images/places/Trial.png",
             upperSrc: "images/places/KitchenUpper.png",
             gameObjects: {
                 hero: new Person({
