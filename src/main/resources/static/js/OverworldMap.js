@@ -1,6 +1,8 @@
 class OverworldMap {
     constructor(config) {
+        this.overworld = null;
         this.gameObjects = config.gameObjects;
+        this.cutsceneSpaces = config.cutsceneSpaces || {};
         this.walls = config.walls || {}; // keeps track of wall objects in game
 
         this.lowerImage = new Image();
@@ -61,6 +63,25 @@ class OverworldMap {
         Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this) )
     }
 
+    checkForActionCutscene() {
+        const hero = this.gameObjects["hero"];
+        const nextCoords = utils.nextPosition(hero.x, hero.y, hero.direction);
+        const match = Object.values(this.gameObjects).find(object => {
+          return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`
+        });
+        if (!this.isCutscenePlaying && match && match.talking.length) {
+            this.startCutscene(match.talking[0].events)
+          }
+      }
+
+      checkForFootstepCutscene() {
+        const hero = this.gameObjects["hero"];
+        const match = this.cutsceneSpaces[ `${hero.x},${hero.y}` ];
+        if (!this.isCutscenePlaying && match) {
+          this.startCutscene( match[0].events )
+        }
+      }
+
     //Adds wall to player object, then removes it when it moves and adds another and so on
     addWall(x,y) {
         this.walls[`${x},${y}`] = true;
@@ -82,7 +103,7 @@ class OverworldMap {
                 hero: new Person({
                     isPlayerControlled: true,
                     x: utils.withGrid(6),
-                    y: utils.withGrid(12),
+                    y: utils.withGrid(11),
                      src: "images/characters/shadowelf.png"
                 }),
                 npc1: new Person({
@@ -94,6 +115,15 @@ class OverworldMap {
                         {type: "stand", direction: "up", time: 800},
                         {type: "stand", direction: "right", time: 1200},
                         {type: "stand", direction: "up", time: 300},
+                    ],
+                    talking: [
+                        {
+                            events: [
+                                {type: "textMessage", text: "We got the runs!", faceHero: "npc1" },
+                                {type: "textMessage", text: "Man oh man!"},
+                                {who: "hero", type: "walk", direction: "down"},
+                            ]
+                        }
                     ]
                 }),
                 npc2: new Person({
@@ -124,15 +154,15 @@ class OverworldMap {
                     src: "images/characters/bartenderBeastman.png"
                 }),
                 npc6: new Person({
-                    x: utils.withGrid(7),
+                    x: utils.withGrid(8),
                     y: utils.withGrid(4),
                     src: "images/characters/mercenaryBeastman.png"
                 }),
-                npc6B: new Person({
-                    x: utils.withGrid(6),
-                    y: utils.withGrid(13),
-                    src: "images/characters/mercenaryBeastman.png"
-                }),
+                // npc6B: new Person({
+                //     x: utils.withGrid(6),
+                //     y: utils.withGrid(13),
+                //     src: "images/characters/mercenaryBeastman.png"
+                // }),
                 npc7: new Person({
                     x: utils.withGrid(12),
                     y: utils.withGrid(6),
@@ -235,27 +265,54 @@ class OverworldMap {
                 [utils.asGridCoord(10,4)] : true,
 
                 [utils.asGridCoord(6,4)] : true, //right bartender wall
-                [utils.asGridCoord(6,5)] : true,
-                
+                [utils.asGridCoord(6,5)] : true,   
+            },
+            cutsceneSpaces: {
+                [utils.asGridCoord(7,3)]: [
+                    {
+                        events: [
+
+                            { who: "npc6", type: "walk", direction: "left" },
+                            { who: "npc6", type: "stand", direction: "up", time:500 },
+                            {type: "textMessage", text:"You can't be in there  buckeroo!"},
+                            { who: "npc6", type: "walk", direction: "right", },
+                            { who: "npc6", type: "stand", direction: "down", time:500 },
+
+                            { who: "hero", type: "walk", direction: "down" },
+                            { who: "hero", type: "walk", direction: "down" },
+                        ]
+                    }
+                ],
+                [utils.asGridCoord(6,13)]: [
+                    {
+                        events: [
+                            {type: "changeMap", map: "Kitchen"}
+                        ]
+                    }
+                ]
             }
         },
         Kitchen: {
             lowerSrc: "images/places/KitchenLower.png",
             upperSrc: "images/places/KitchenUpper.png",
             gameObjects: {
-                hero: new GameObject({
-                    x: 3,
-                    y: 5,
+                hero: new Person({
+                    isPlayerControlled: true,
+                    x: utils.withGrid(5),
+                    y: utils.withGrid(5),
+                    src: "images/characters/shadowelf.png",
                 }),
-                npcA: new GameObject({
-                    x: 9,
-                    y: 6,
-                    src: "images/characters/mercenaryBeastman.png"
-                }),
-                npcB: new GameObject({
-                    x: 10,
-                    y: 8,
-                    src: "images/characters/shadowelf.png"
+                npcA: new Person({
+                    x: utils.withGrid(10),
+                    y: utils.withGrid(8),
+                    src: "images/characters/shadowelf.png",
+                    talking: [
+                        {
+                            events: [
+                                {type: "textMessage", text: "You Made It!", faceHero: "npcA" },
+                            ]
+                        }
+                    ]
                 })
             }
         },

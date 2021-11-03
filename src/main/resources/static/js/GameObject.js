@@ -13,6 +13,8 @@ class GameObject {
         this.behaviorLoop = config.behaviorLoop || []; // what one passes in, the values
         this.behaviorLoopIndex = 0; // keeps track of which behavior we are on
 
+        this.talking = config.talking || [];
+
     }
 
     mount(map) {

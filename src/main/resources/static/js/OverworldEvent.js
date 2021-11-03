@@ -45,6 +45,25 @@ class OverworldEvent {
 
     }
 
+    textMessage(resolve) { // when ran, creates textmessage,init it, pass in where it should inject text, init create the element that gets injected and inject it to see on screen
+
+        if (this.event.faceHero) {
+            const obj = this.map.gameObjects[this.event.faceHero];
+            obj.direction = utils.oppositeDirection(this.map.gameObjects["hero"].direction);
+          }
+
+        const message = new TextMessage({
+          text: this.event.text,
+          onComplete: () => resolve()
+        })
+        message.init( document.querySelector(".game-container") )
+      }
+
+    changeMap(resolve) {
+        this.map.overworld.startMap( window.OverworldMaps[this.event.map] );
+        resolve();
+      }
+
     //Kicks off instructional methods ^
     init() {
         return new Promise(resolve => {

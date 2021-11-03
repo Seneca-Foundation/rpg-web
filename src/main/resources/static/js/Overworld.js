@@ -46,45 +46,72 @@ class Overworld //top level parent component
         step();
     }
 
+    bindActionInput() {
+        new KeyPressListener("Enter", () => {
+          //Is there a person here to talk to?
+          this.map.checkForActionCutscene()
+        })
+      }
+
+      bindHeroPositionCheck() {
+        document.addEventListener("PersonWalkingComplete", e => {
+          if (e.detail.whoId === "hero") {
+            //Hero's position has changed
+            this.map.checkForFootstepCutscene()
+          }
+        })
+      }
+
+      startMap(mapConfig) {
+        this.map = new OverworldMap(mapConfig);
+        this.map.overworld = this;
+        this.map.mountObjects();
+       }
+
     init() 
     {
-        this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
-        this.map.mountObjects();
+        this.startMap(window.OverworldMaps.DemoRoom);
+
+
+        this.bindActionInput();
+        this.bindHeroPositionCheck();
 
         this.directionInput = new DirectionInput();
         this.directionInput.init();               //get key bindings on document
         //this.directionInput.direction; //"down","up",etc
 
         this.startGameLoop();
+        this.bindHeroPositionCheck();
 
 
         //change to fit cutscene of scenario
-        this.map.startCutscene([
-            {who: "hero", type: "walk", direction: "up" }, //Hero Scene
-            {who: "hero", type: "walk", direction: "up" },
-            {who: "hero", type: "walk", direction: "up" },
-            {who: "hero", type: "stand", direction: "up"},
+        // this.map.startCutscene([
+        //     {who: "hero", type: "walk", direction: "up" }, //Hero Scene
+        //     {who: "hero", type: "walk", direction: "up" },
+        //     {who: "hero", type: "walk", direction: "up" },
+        //     {who: "hero", type: "stand", direction: "up"},
 
-            {who: "npc6B", type: "walk", direction: "up" }, //Exit Door Mercenary
-            {who: "npc6B", type: "stand", direction: "up"},
+        //     {who: "npc6B", type: "walk", direction: "up" }, //Exit Door Mercenary
+        //     {who: "npc6B", type: "stand", direction: "up"},
 
-            {who: "npc6", type: "walk", direction: "down" }, //Mercenary Receiver
-            {who: "npc6", type: "walk", direction: "down" },
-            {who: "npc6", type: "walk", direction: "left" },
-            {who: "npc6", type: "walk", direction: "down" },
-            {who: "npc6", type: "walk", direction: "down" },
-            {who: "npc6", type: "stand", direction: "down", time: 800 },
+        //     {who: "npc6", type: "walk", direction: "down" }, //Mercenary Receiver
+        //     {who: "npc6", type: "walk", direction: "down" },
+        //     {who: "npc6", type: "walk", direction: "left" },
+        //     {who: "npc6", type: "walk", direction: "down" },
+        //     {who: "npc6", type: "walk", direction: "down" },
+        //     {who: "npc6", type: "stand", direction: "down", time: 800 },
 
-            {who: "npc1", type: "stand", direction: "right", time: 800 }, //Nosy Pandas
-            {who: "npc2", type: "stand", direction: "right", time: 1000 },
+        //     {who: "npc1", type: "stand", direction: "right", time: 800 }, //Nosy Pandas
+        //     {who: "npc2", type: "stand", direction: "right", time: 1000 },
 
-            {who: "npc3", type: "stand", direction: "up", time: 800 }, //Shadowlord and Henchmen 
-            {who: "npc4", type: "stand", direction: "up", time: 800 },
+        //     {who: "npc3", type: "stand", direction: "up", time: 800 }, //Shadowlord and Henchmen 
+        //     {who: "npc4", type: "stand", direction: "up", time: 800 },
 
-            {who: "npc7", type: "stand", direction: "left", time: 800 }, //Female Bartender
+        //     {who: "npc7", type: "stand", direction: "left", time: 800 }, //Female Bartender
             
-            {who: "npc10", type: "stand", direction: "right", time: 800 }, //Doctor
+        //     {who: "npc10", type: "stand", direction: "right", time: 800 }, //Doctor
+        //     {type: "textMessage", text: "WHY HELLO THERE!"}
 
-        ])
+        // ])
     }
 }
