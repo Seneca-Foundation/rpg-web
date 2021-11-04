@@ -209,14 +209,26 @@ class OverworldMap {
                 // npc6B: new Person({
                 //     x: utils.withGrid(6),
                 //     y: utils.withGrid(13),
-                //     src: "images/characters/mercenaryBeastman.png"
+                //     src: "images/characters/mercenaryBeastman.png",
+                //     behaviorLoop: [
+                //         {type: "stand", direction: "up"},
+                //     ],
+                //     talking: [
+                //         {
+                //             events: [
+                //                 {type: "textMessage", text: "... ", faceHero: "npc6B" },
+                //                 {type: "textMessage", text: "Backoff."},
+                //                 {type: "textMessage", text: "Meow."},
+                //             ]
+                //         }
+                //     ]
                 // }),
                 npc7: new Person({
                     x: utils.withGrid(12),
                     y: utils.withGrid(6),
                     src: "images/characters/femaleBartenderBeastman.png",
                     behaviorLoop: [
-                        {type: "stand", direction: "down"},
+                        // {type: "stand", direction: "down"},
                     ],
                     talking: [
                         {
@@ -326,7 +338,7 @@ class OverworldMap {
                 [utils.asGridCoord(13,2)] : true,
                 [utils.asGridCoord(13,3)] : true,
                 [utils.asGridCoord(13,4)] : true, 
-                [utils.asGridCoord(13,5)] : true,
+                // [utils.asGridCoord(13,5)] : true, //glitch hole
                 [utils.asGridCoord(13,6)] : true,
                 [utils.asGridCoord(13,7)] : true,
                 [utils.asGridCoord(13,8)] : true,
@@ -365,7 +377,7 @@ class OverworldMap {
                 [utils.asGridCoord(8,7)] : true, // top right table
                 [utils.asGridCoord(3,10)] : true, // bottom left table
                 [utils.asGridCoord(8,10)] : true, // bottom right table
-                [utils.asGridCoord(11,5)] : true, // far right table
+                // [utils.asGridCoord(11,5)] : true, // far right table
 
                 [utils.asGridCoord(11,7)] : true, // front desk table
                 [utils.asGridCoord(12,7)] : true, 
@@ -407,6 +419,22 @@ class OverworldMap {
                             {type: "changeMap", map: "Backroom"}
                         ]
                     }
+                ],
+                [utils.asGridCoord(13,5)]: [
+                    {
+                        events: [
+
+                            { who: "npc7", type: "stand", direction: "up", time:500 },
+                            {type: "textMessage", text:"Woah! It seems you found a glitch in the game."},
+                            {type: "textMessage", text:"Shhhhhhhh... The developer can't know of this."},
+                            {type: "textMessage", text:"Come back and act like nothing happened."},
+                            {type: "textMessage", text:"Meow."},
+                            { who: "npc7", type: "stand", direction: "down", time:500 },
+
+                            { who: "hero", type: "walk", direction: "left" },
+                            { who: "hero", type: "walk", direction: "left" },
+                        ]
+                    }
                 ]
             }
         },
@@ -421,21 +449,128 @@ class OverworldMap {
                     src: "images/characters/shadowelf.png",
                 }),
                 npcA: new Person({
-                    x: utils.withGrid(10),
-                    y: utils.withGrid(8),
-                    src: "images/characters/shadowelf.png",
+                    x: utils.withGrid(9),
+                    y: utils.withGrid(6),
+                    src: "images/characters/mercenaryBeastman.png",
+                    behaviorLoop: [
+                        {type: "stand", direction: "left"},
+                    ],
                     talking: [
                         {
                             events: [
-                                {type: "textMessage", text: "You Made It!", faceHero: "npcA" },
+                                {type: "textMessage", text: "...", faceHero: "npcA" },
+                            ]
+                        }
+                    ]
+                }),
+                npcB: new Person({
+                    x: utils.withGrid(9),
+                    y: utils.withGrid(7),
+                    src: "images/characters/mercenaryBeastman.png",
+                    behaviorLoop: [
+                        {type: "stand", direction: "left"},
+                    ],
+                    talking: [
+                        {
+                            events: [
+                                {type: "textMessage", text: "...", faceHero: "npcB" },
+                            ]
+                        }
+                    ]
+                }),
+                npcC: new Person({
+                    x: utils.withGrid(5),
+                    y: utils.withGrid(4),
+                    src: "images/characters/mercenaryBeastman.png",
+                    behaviorLoop: [
+                        {type: "stand", direction: "down"},
+                    ],
+                    talking: [
+                        {
+                            events: [
+                                {type: "textMessage", text: "Don't go in there bro.", faceHero: "npcB" },
                             ]
                         }
                     ]
                 })
+            },
+            walls: {
+                // "16,16" : true
+                [utils.asGridCoord(1,3)] : true, // outer perimeter top
+                [utils.asGridCoord(2,3)] : true,
+                [utils.asGridCoord(3,3)] : true,
+                [utils.asGridCoord(4,3)] : true,
+                [utils.asGridCoord(5,3)] : true, 
+                [utils.asGridCoord(6,4)] : true,
+                // [utils.asGridCoord(7,3)] : true, // back door
+                [utils.asGridCoord(8,4)] : true,
+                [utils.asGridCoord(9,3)] : true,
+                [utils.asGridCoord(10,3)] : true, 
+
+                [utils.asGridCoord(7,6)] : true, // table
+                [utils.asGridCoord(7,7)] : true, 
+                [utils.asGridCoord(8,6)] : true, 
+                [utils.asGridCoord(8,7)] : true, 
+                
+                [utils.asGridCoord(11,4)] : true,// right perimeter
+                [utils.asGridCoord(11,5)] : true,
+                [utils.asGridCoord(11,6)] : true,
+                [utils.asGridCoord(11,7)] : true,
+                [utils.asGridCoord(11,8)] : true,
+                [utils.asGridCoord(11,9)] : true,
+
+                [utils.asGridCoord(1,10)] : true, // bottom perimeter 
+                [utils.asGridCoord(2,10)] : true,
+                [utils.asGridCoord(3,10)] : true,
+                [utils.asGridCoord(4,10)] : true,
+                // [utils.asGridCoord(5,10)] : true, // bottom door
+                [utils.asGridCoord(6,10)] : true,
+                [utils.asGridCoord(7,10)] : true, 
+                [utils.asGridCoord(8,10)] : true,
+                [utils.asGridCoord(9,10)] : true,
+                [utils.asGridCoord(10,10)] : true, 
+
+                [utils.asGridCoord(0,4)] : true,// left perimeter
+                [utils.asGridCoord(0,5)] : true,
+                [utils.asGridCoord(0,6)] : true,
+                [utils.asGridCoord(0,7)] : true,
+                [utils.asGridCoord(0,8)] : true,
+                [utils.asGridCoord(0,9)] : true,  
+            },
+            cutsceneSpaces: {
+                // [utils.asGridCoord(7,10)]: [
+                //     {
+                //         events: [
+
+                //             { who: "npc6", type: "walk", direction: "left" },
+                //             { who: "npc6", type: "stand", direction: "up", time:500 },
+                //             {type: "textMessage", text:"You can't be in there  buckeroo!"},
+                //             { who: "npc6", type: "walk", direction: "right", },
+                //             { who: "npc6", type: "stand", direction: "down", time:500 },
+
+                //             { who: "hero", type: "walk", direction: "down" },
+                //             { who: "hero", type: "walk", direction: "down" },
+                //         ]
+                //     }
+                // ],
+                [utils.asGridCoord(7,3)]: [
+                    {
+                        events: [
+                            {type: "changeMap", map: "Backdoor"}
+                        ]
+                    }
+                ],
+                [utils.asGridCoord(5,11)]: [
+                    {
+                        events: [
+                            {type: "changeMap", map: "Trial"}
+                        ]
+                    }
+                ]
             }
         },
         Trial: {
-            lowerSrc: "images/places/Trial.png",
+            lowerSrc: "images/places/7daytrial.png",
             upperSrc: "images/places/KitchenUpper.png",
             gameObjects: {
                 hero: new Person({
@@ -444,18 +579,73 @@ class OverworldMap {
                     y: utils.withGrid(5),
                     src: "images/characters/shadowelf.png",
                 }),
-                npcA: new Person({
+                npc: new Person({
                     x: utils.withGrid(10),
                     y: utils.withGrid(8),
-                    src: "images/characters/shadowelf.png",
+                    src: "images/characters/mercenaryBeastman.png",
                     talking: [
                         {
                             events: [
-                                {type: "textMessage", text: "You Made It!", faceHero: "npcA" },
+                                {type: "textMessage", text: "Click Here to Begin!", faceHero: "npc" },
                             ]
                         }
                     ]
                 })
+            }
+        },
+        Backdoor: {
+            lowerSrc: "images/places/pg2.png",
+            upperSrc: "images/places/KitchenUpper.png",
+            gameObjects: {
+                hero: new Person({
+                    isPlayerControlled: true,
+                    x: utils.withGrid(5),
+                    y: utils.withGrid(5),
+                    src: "images/characters/shadowelf.png",
+                }),
+                // npcA: new Person({
+                //     x: utils.withGrid(10),
+                //     y: utils.withGrid(8),
+                //     src: "images/characters/shadowelf.png",
+                //     talking: [
+                //         {
+                //             events: [
+                //                 {type: "textMessage", text: "You Made It!", faceHero: "npcA" },
+                //             ]
+                //         }
+                //     ]
+                // })
+            },
+            cutsceneSpaces: {
+                // [utils.asGridCoord(7,10)]: [
+                //     {
+                //         events: [
+
+                //             { who: "npc6", type: "walk", direction: "left" },
+                //             { who: "npc6", type: "stand", direction: "up", time:500 },
+                //             {type: "textMessage", text:"You can't be in there  buckeroo!"},
+                //             { who: "npc6", type: "walk", direction: "right", },
+                //             { who: "npc6", type: "stand", direction: "down", time:500 },
+
+                //             { who: "hero", type: "walk", direction: "down" },
+                //             { who: "hero", type: "walk", direction: "down" },
+                //         ]
+                //     }
+                // ],
+                [utils.asGridCoord(5,11)]: [
+                    {
+                        events: [
+                            {type: "changeMap", map: "Trial"}
+                        ]
+                    }
+                ]
+                // [utils.asGridCoord(5,11)]: [
+                //     {
+                //         events: [
+                //             {type: "changeMap", map: "Trial"}
+                //         ]
+                //     }
+                // ]
             }
         },
     }
