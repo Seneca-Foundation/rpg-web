@@ -85,30 +85,30 @@ class Overworld //top level parent component
 
 
         //change to fit cutscene of scenario
-        // this.map.startCutscene([
-        //     {who: "hero", type: "walk", direction: "up" }, //Hero Scene
-        //     {who: "hero", type: "walk", direction: "up" },
-        //     {who: "hero", type: "walk", direction: "up" },
-        //     {who: "hero", type: "stand", direction: "up"},
+        this.map.startCutscene([
+            {who: "hero", type: "walk", direction: "up" }, //Hero Scene
+            {who: "hero", type: "walk", direction: "up" },
+            {who: "hero", type: "walk", direction: "up" },
+            {who: "hero", type: "stand", direction: "up"},
 
-        //     {who: "npc6B", type: "walk", direction: "up" }, //Exit Door Mercenary
-        //     {who: "npc6B", type: "walk", direction: "up"},
-        //     {who: "npc6B", type: "walk", direction: "up" }, 
-        //     {who: "npc6B", type: "walk", direction: "up"},
-        //     {who: "npc6B", type: "stand", direction: "up"},
+            {who: "npc6B", type: "walk", direction: "up" }, //Exit Door Mercenary
+            {who: "npc6B", type: "walk", direction: "up"},
+            {who: "npc6B", type: "walk", direction: "up" }, 
+            {who: "npc6B", type: "walk", direction: "up"},
+            {who: "npc6B", type: "stand", direction: "up"},
 
-        //     {who: "npc1", type: "stand", direction: "right", time: 800 }, //Nosy Pandas
-        //     {who: "npc2", type: "stand", direction: "right", time: 1000 },
+            {who: "npc1", type: "stand", direction: "right", time: 800 }, //Nosy Pandas
+            {who: "npc2", type: "stand", direction: "right", time: 1000 },
 
-        //     {who: "npc3", type: "stand", direction: "up", time: 800 }, //Shadowlord and Henchmen 
-        //     {who: "npc4", type: "stand", direction: "up", time: 800 },
+            {who: "npc3", type: "stand", direction: "up", time: 800 }, //Shadowlord and Henchmen 
+            {who: "npc4", type: "stand", direction: "up", time: 800 },
 
-        //     {who: "npc7", type: "stand", direction: "left", time: 800 }, //Female Bartender
+            {who: "npc7", type: "stand", direction: "left", time: 800 }, //Female Bartender
             
-        //     {who: "npc10", type: "stand", direction: "right", time: 800 }, //Doctor
-        //     {type: "textMessage", text: "You better not make any trouble. My boss will come get you when the time comes."},
-        //     {type: "textMessage", text: "In the mean time, explore a bit. Just don't get any funny ideas, yuh hearr."}
+            {who: "npc10", type: "stand", direction: "right", time: 800 }, //Doctor
+            {type: "textMessage", text: "You better not make any trouble. My boss will come get you when the time comes."},
+            {type: "textMessage", text: "In the mean time, explore a bit. Just don't get any funny ideas, yuh hearr."}
 
-        // ])
+        ])
     }
 }

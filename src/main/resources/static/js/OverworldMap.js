@@ -206,23 +206,23 @@ class OverworldMap {
                         }
                     ]
                 }),
-                // npc6B: new Person({
-                //     x: utils.withGrid(6),
-                //     y: utils.withGrid(13),
-                //     src: "images/characters/mercenaryBeastman.png",
-                //     behaviorLoop: [
-                //         {type: "stand", direction: "up"},
-                //     ],
-                //     talking: [
-                //         {
-                //             events: [
-                //                 {type: "textMessage", text: "... ", faceHero: "npc6B" },
-                //                 {type: "textMessage", text: "Backoff."},
-                //                 {type: "textMessage", text: "Meow."},
-                //             ]
-                //         }
-                //     ]
-                // }),
+                npc6B: new Person({
+                    x: utils.withGrid(6),
+                    y: utils.withGrid(13),
+                    src: "images/characters/mercenaryBeastman.png",
+                    behaviorLoop: [
+                        {type: "stand", direction: "up"},
+                    ],
+                    talking: [
+                        {
+                            events: [
+                                {type: "textMessage", text: "... ", faceHero: "npc6B" },
+                                {type: "textMessage", text: "Backoff."},
+                                {type: "textMessage", text: "Meow."},
+                            ]
+                        }
+                    ]
+                }),
                 npc7: new Person({
                     x: utils.withGrid(12),
                     y: utils.withGrid(6),
