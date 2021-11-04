@@ -59,9 +59,17 @@ class OverworldEvent {
         message.init( document.querySelector(".game-container") )
       }
 
-    changeMap(resolve) {
-        this.map.overworld.startMap( window.OverworldMaps[this.event.map] );
-        resolve();
+      changeMap(resolve) {
+        //wait then fire off transition
+        const sceneTransition = new SceneTransition();
+        sceneTransition.init(document.querySelector(".game-container"), () => {
+            //Map changes
+          this.map.overworld.startMap( window.OverworldMaps[this.event.map] );
+          resolve();
+            //see new map
+          sceneTransition.fadeOut();
+    
+        })
       }
 
     //Kicks off instructional methods ^
