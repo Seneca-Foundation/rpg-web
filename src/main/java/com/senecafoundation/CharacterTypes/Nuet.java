@@ -34,6 +34,10 @@ public class Nuet extends Character
         this.lightArmorBonus = lightArmor;
     }
 
+    public Nuet() {
+        super();
+    }
+
     //Method
     public String PlayerDetails() //override
     {
