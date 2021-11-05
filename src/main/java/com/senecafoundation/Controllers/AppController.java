@@ -15,4 +15,28 @@ public class AppController
     return "index";
   }
 
+  @RequestMapping(method=RequestMethod.GET, value = "/topdownmap/")
+  public String topdownman()
+  {
+    return "topdownmap";
+  }
+
+  @RequestMapping(method=RequestMethod.GET, value = "/indexTwo")
+  public String indie()
+  {
+    return "indexTwo";
+  }
+
+  @RequestMapping(method=RequestMethod.GET, value = "/startscreen")
+  public String start()
+  {
+    return "startScreen";
+  }
+
+  @RequestMapping(method=RequestMethod.GET, value = "/inventory")
+  public String inventory()
+  {
+    return "inventory";
+  }
+  
 }

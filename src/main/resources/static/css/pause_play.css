@@ -1,0 +1,22 @@
+#player-container #play-pause {
+    cursor: pointer;
+    text-indent: -999999px;
+    height:40px;
+    width: 40px;
+    padding: 12px 18px;
+    z-index: 2;
+      background-image: url(https://cdn3.iconfinder.com/data/icons/media-player-controls-1/100/mute-512.png);
+      background-repeat: no-repeat!important;
+      background-position: center;
+      background-size: 16px;
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:20px;
+    background-color: gainsboro;
+  }
+  .play {
+    background-image: url(https://cdn3.iconfinder.com/data/icons/media-player-controls-1/100/mute-512.png);
+  }
+  .pause {
+     background-image: url(https://cdn4.iconfinder.com/data/icons/play/100/Volume-512.png)!important;
+  }

@@ -1,0 +1,35 @@
+:root {
+    --border-color: #291D4D;
+    --dialog-background: #FFF3B4;
+  
+    --menu-background: #FFE8D2;
+    --menu-border-color: #A48465;
+    --menu-font-color: #3A160D;
+    --menu-selected-background: #7fc2ff;
+  }
+
+* {
+    box-sizing:border-box;
+}
+
+body{
+    background: #333;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.game-container {
+    position:relative;
+    width: 352px;
+    height: 198px;
+    margin: 0 auto;
+    outline: 1px solid #fff;
+
+    transform: scale(3) translateY(50%); /* takes every pixel on screen and multiplies it by n ; translateY moves container 50 percent of the heiht og the container */
+}
+
+.game-container canvas{
+    image-rendering: pixelated; /* takes all canvases and tells browser to evenly multioly all the pixels to make everyhting not look fuzzy */
+}
+h1 { margin-top: 1em;  margin-bottom: 1em;}
