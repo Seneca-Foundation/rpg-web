@@ -331,8 +331,8 @@ class OverworldMap {
                 [utils.asGridCoord(8,0)] : true,
                 [utils.asGridCoord(9,0)] : true,
                 [utils.asGridCoord(10,0)] : true, 
-                [utils.asGridCoord(11,0)] : true,
-                [utils.asGridCoord(12,0)] : true,
+                [utils.asGridCoord(11,4)] : true,
+                [utils.asGridCoord(12,4)] : true,
 
                 [utils.asGridCoord(13,1)] : true, // outer right perimeter
                 [utils.asGridCoord(13,2)] : true,
