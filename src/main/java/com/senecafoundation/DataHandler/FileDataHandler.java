@@ -67,7 +67,7 @@ public class FileDataHandler extends CharacterDataHandler {
                 if(line.contains(id.toString())) { 
                     String[] props = line.split(",");
                     if (props[0].equals("Orc")) {
-                        Orc orcToReturn = new Orc(props[2], Integer.parseInt(props[3]), props[4], Integer.parseInt(props[5]), Integer.parseInt(props[6]), this);
+                        Orc orcToReturn = new Orc(props[2], Integer.parseInt(props[3]), props[4], Integer.parseInt(props[5]), Integer.parseInt(props[6]));
                         orcToReturn.setId(id);
                         return orcToReturn;
                     }

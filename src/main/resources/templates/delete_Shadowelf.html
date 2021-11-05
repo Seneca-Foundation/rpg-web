@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Select the NPC You Would Like to Delete</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/98mprice/PSone.css@master/PSone.min.css">
+</head>
+    <body>
+        <main class="nes-container">
+            <h3 class="mainTitle">Click on the Shadowelf You Wish to Delete</h3>
+            <br>
+            <table id="buttonTable" >
+                <tr th:each="Shadowelf : ${shadowelf}">
+                    <td><button  class="delete-button nes-btn is-warning" th:data-id="${shadowelf.Id}" th:text="${shadowelf.name}"></button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="/shadowelf/createform/" id="backbtn" class="nes-btn is-primary">Back</a>
+                    </td>
+                </tr>
+                <div id="loadstuffhere"></div>
+            </table>
+            <script type="text/javascript">
+                var listOfDeleteButtons = document.getElementsByClassName("delete-button");
+                for(let buttonIndex = 0; buttonIndex < listOfDeleteButtons.length; buttonIndex++) {
+                    listOfDeleteButtons[buttonIndex].onclick = function() {
+                        // Creates an object to send request to web server
+                        var xhr = new XMLHttpRequest();
+                        xhr.buttonClick = this;
+                        // Right now this is a button
+                        // Define the request method and url
+                        xhr.open("DELETE", "http://localhost/shadowelf/deleteform/" + this.dataset.id);
+
+                        //Set Header
+                        xhr.setRequestHeader("Accept", "application/json");
+
+                        // Set a function to run on state change
+                        xhr.onreadystatechange = function() {
+                            //state == 4
+                            if (xhr.readyState === 4 && xhr.status === 200) {
+                                xhr.buttonClick.parentElement.parentElement.remove();
+                                // Log out the status and response to the console
+                                console.log(xhr.status);
+                                console.log(xhr.responseText);
+                                // Inject the response text into the html tag with id "loadstuffhere"
+                                document.getElementById("loadstuffhere").innerHTML = xhr.responseText;
+                            }
+                        };
+                        // Send the request
+                        xhr.send();
+                    }
+                }
+            </script>
+        </main>
+    </body>
+</html>

@@ -6,44 +6,44 @@ import javax.persistence.MappedSuperclass;
 public class BaseStats 
 {  
     //Encapsulation
-    private int Health;
-    private int Mana;
-    private int Stamina;
+    private int health;
+    private int mana;
+    private int stamina;
 
     //Accessors and Mutators
     public int getHealth()
     {
-        return this.Health;
+        return this.health;
     }
     public void setHealth(int newHealth)
     {
-        this.Health = newHealth;
+        this.health = newHealth;
     }
 
     public int getMana()
     {
-        return this.Mana;
+        return this.mana;
     }
     public void setMana(int newMana)
     {
-        this.Mana = newMana;
+        this.mana = newMana;
     }
     
     public int getStamina()
     {
-        return this.Stamina;
+        return this.stamina;
     }
     public void setStamina(int newStamina)
     {
-        this.Stamina = newStamina;
+        this.stamina = newStamina;
     }
 
     //Construtor
     public BaseStats(int health, int mana, int stamina)
     {
-        this.Health = health;
-        this.Mana = mana;
-        this.Stamina = stamina;
+        this.health = health;
+        this.mana = mana;
+        this.stamina = stamina;
     }
 
     public BaseStats() {
@@ -51,6 +51,6 @@ public class BaseStats
     //Method
     public String PrintStats()
     {
-        return("Health: " + Health + "Mana: " + Mana + "Stamina: " + Stamina);
+        return("Health: " + health + "Mana: " + mana + "Stamina: " + stamina);
     }
 }

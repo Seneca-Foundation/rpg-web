@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
+
 import com.senecafoundation.DataHandler.Interfaces.IDataHandler;
 
 @MappedSuperclass
@@ -24,13 +25,7 @@ public abstract class Character extends BaseStats implements ICharacter
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    @Transient
-    private IDataHandler dataHandler;
     
-    //Encapsulation
-    public IDataHandler getDataHandler() {
-        return dataHandler;
-    }
     public String getSprite_url() {
         return sprite_url;
     }
@@ -71,14 +66,13 @@ public abstract class Character extends BaseStats implements ICharacter
     }
   
     //Constructor
-    public Character(String name, int age, String sex, IDataHandler dataHandler, int health, int mana, int stamina)
+    public Character(String name, int age, String sex, int health, int mana, int stamina)
     {
         super(health, mana, stamina);
         this.name = name;
         this.age = age;
         this.sex = sex;
         this.setId(UUID.randomUUID());
-        this.dataHandler = dataHandler; 
     }
 
     public Character() {

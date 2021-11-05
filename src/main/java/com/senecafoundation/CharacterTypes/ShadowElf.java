@@ -39,9 +39,9 @@ public class ShadowElf extends Character
     }
 
     //Constructor
-    public ShadowElf(String name, int age, String sex, int destruction, int alteration, IDataHandler dataHandler)
+    public ShadowElf(String name, int age, String sex, int destruction, int alteration)
     {
-        super(name, age, sex, dataHandler, 30, 80, 80);
+        super(name, age, sex, 30, 80, 80);
         this.destructionBonus = destruction;
         this.alterationBonus = alteration;
     }

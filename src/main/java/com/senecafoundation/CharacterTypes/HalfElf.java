@@ -28,9 +28,9 @@ public class HalfElf extends Character
     }
 
     //Constructor
-    public HalfElf(String name, int age, String sex, int conjuration, int restoration, IDataHandler dataHandler)
+    public HalfElf(String name, int age, String sex, int conjuration, int restoration)
     {
-        super(name, age, sex, dataHandler, 40, 80, 50);
+        super(name, age, sex,40, 80, 50);
         this.conjurationBonus = conjuration;
         this.restorationBonus = restoration;
     }

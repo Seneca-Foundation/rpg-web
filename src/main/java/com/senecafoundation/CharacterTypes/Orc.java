@@ -28,9 +28,9 @@ public class Orc extends Character
 
     
     //Constructor
-    public Orc(String name, int age, String sex, int heavyArmor, int smithing, IDataHandler datahandler)
+    public Orc(String name, int age, String sex, int heavyArmor, int smithing)
     {
-        super(name, age, sex, datahandler, 70, 0, 80);
+        super(name, age, sex, 70, 0, 80);
         this.heavyArmorBonus = heavyArmor;
         this.smithingBonus = smithing;
     }
