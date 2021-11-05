@@ -11,7 +11,7 @@
 		th:object="${Npc}">
 		<input type="hidden" th:field="*{id}" />
 		<div class="card">
-			<h2>Create NPC</h2>
+			<h2>Create Stats</h2>
 			<p id="errorMessage"></p>
 			<div class="row">
 				<div class="col">
@@ -38,21 +38,21 @@
 				<div class="col">
 					<div class="form-group">
 						<label>Health</label>
-						<input type="text" th:field="*{Health}" name="Health" />
+						<input type="text" th:field="*{health}" name="health" />
 					</div>
 				</div>
 
 				<div class="col">
 					<div class="form-group">
 						<label>Mana</label>
-						<input type="text" th:field="*{Mana}" name="Mana" />
+						<input type="text" th:field="*{mana}" name="mana" />
 					</div>
 				</div>
 
 				<div class="col">
 					<div class="form-group">
 						<label>Stamina</label>
-						<input type="text" th:field="*{Stamina}" name="Stamina" />
+						<input type="text" th:field="*{stamina}" name="stamina" />
 					</div>
 				</div>
 
@@ -71,9 +71,9 @@
 					"name": form.elements["name"].value,
 					"age": form.elements["age"].value,
 					"sex": form.elements["sex"].value,
-					"Health": form.elements["Health"].value,
-					"Mana": form.elements["Mana"].value,
-					"Stamina": form.elements["Stamina"].value,
+					"health": form.elements["health"].value,
+					"mana": form.elements["mana"].value,
+					"stamina": form.elements["stamina"].value,
 					"phrases": [
 						"This is a test",
 						"Another test" //NOTE: the HTML seems to not have been adapted to the phrases yet; will finish after everything
@@ -85,7 +85,7 @@
 					if (this.readyState === 4) {
 						console.log(this.responseText);
 						if (this.status == 200) {
-							errorMessage.innerText = "New NPC was created successfully."
+							errorMessage.innerText = "New Stats was created successfully."
 						} else {
 							errorMessage.innerText = "There was an error: " + JSON.stringify(this.responseText)
 						}
