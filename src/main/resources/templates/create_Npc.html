@@ -1,62 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Create a NPC</title>
-    <link rel="stylesheet" th:href="@{/css/rpg.css}">
-</head>
-    <body>
-        <form action="#" th:action="${Npc.id == null} ? @{/Npc/createform} : @{/Npc/updateform}" method="post" th:object="${Npc}">
-        <input type="hidden" th:field="*{id}" />
-        <div class="card">
-            <h2>Create NPC</h2>
-            <div class="row">
-              <div class="col">
-                <div class="form-group">
-                  <label>Name</label>
-                  <input type="text" th:field="*{name}" />
-                </div>
-              </div>
-          
-              <div class="col">
-                <div class="form-group">
-                  <label>Age</label>
-                  <input type="text" th:field="*{age}" />
-                </div>
-              </div>
-          
-              <div class="col">
-                <div class="form-group">
-                  <label>Sex</label>
-                  <input type="text" th:field="*{sex}" />
-                </div>
-              </div>
-          
-              <div class="col">
-                <div class="form-group">
-                  <label>Health</label>
-                  <input type="text" th:field="*{Health}" />
-                </div>
-              </div>
-          
-              <div class="col">
-                <div class="form-group">
-                  <label>Mana</label>
-                  <input type="text" th:field="*{Mana}" />
-                </div>
-              </div>
 
-              <div class="col">
-                <div class="form-group">
-                  <label>Stamina</label>
-                  <input type="text" th:field="*{Stamina}" />
-                </div>
-              </div>
-          
-              <div class="col">
-                <input type="submit" value="Submit">
-              </div>
-            </form:form>
-            </div>
-          </div>
-    </body>
+<head>
+	<title>Create a NPC</title>
+	<link rel="stylesheet" th:href="@{/css/rpg.css}">
+</head>
+
+<body>
+	<form action="#" th:action="${Npc.id == null} ? @{/Npc/createform} : @{/Npc/updateform}" method="post"
+		th:object="${Npc}">
+		<input type="hidden" th:field="*{id}" />
+		<div class="card">
+			<h2>Create NPC</h2>
+			<p id="errorMessage"></p>
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<label>Name</label>
+						<input type="text" th:field="*{name}" name="name" />
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="form-group">
+						<label>Age</label>
+						<input type="text" th:field="*{age}" name="age" />
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="form-group">
+						<label>Sex</label>
+						<input type="text" th:field="*{sex}" name="sex" />
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="form-group">
+						<label>Health</label>
+						<input type="text" th:field="*{Health}" name="Health" />
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="form-group">
+						<label>Mana</label>
+						<input type="text" th:field="*{Mana}" name="Mana" />
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="form-group">
+						<label>Stamina</label>
+						<input type="text" th:field="*{Stamina}" name="Stamina" />
+					</div>
+				</div>
+
+				<div class="col">
+					<input type="submit" value="Submit" name="submit">
+				</div>
+				</form:form>
+			</div>
+		</div>
+		<script>
+			const form = document.getElementsByTagName('form')[0];
+			const errorMessage = document.getElementById('errorMessage');
+			form.addEventListener("submit", function (e) {
+				e.preventDefault();
+				var data = JSON.stringify({
+					"name": form.elements["name"].value,
+					"age": form.elements["age"].value,
+					"sex": form.elements["sex"].value,
+					"Health": form.elements["Health"].value,
+					"Mana": form.elements["Mana"].value,
+					"Stamina": form.elements["Stamina"].value,
+					"phrases": [
+						"This is a test",
+						"Another test" //NOTE: the HTML seems to not have been adapted to the phrases yet; will finish after everything
+					]
+				});
+				var xhr = new XMLHttpRequest();
+				xhr.withCredentials = true;
+				xhr.addEventListener("readystatechange", function () {
+					if (this.readyState === 4) {
+						console.log(this.responseText);
+						if (this.status == 200) {
+							errorMessage.innerText = "New NPC was created successfully."
+						} else {
+							errorMessage.innerText = "There was an error: " + JSON.stringify(this.responseText)
+						}
+
+					}
+				});
+				xhr.open("POST", "/Npcs");
+				xhr.setRequestHeader("Content-Type", "application/json");
+				xhr.send(data);
+			})
+
+		</script>
+		<!-- <script src="/js/NPCForm.js"> -->
+</body>
+
 </html>
